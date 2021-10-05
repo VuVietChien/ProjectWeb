@@ -67,8 +67,6 @@ div.btn-group>button:hover{
     border: 1px solid #FE980F;
     background-color: #FE980F;
     color: white;
-    
-    
 }
 
 div.btn-group>button.btnUSA{
@@ -100,7 +98,6 @@ ul.dropdown-menu>li>a{
 
 div.btn-group:hover .dropdown-menu {
     display: block;
-    
 }
 
 ul.dropdown-menu>li:hover{

@@ -203,6 +203,7 @@ div.rigrt-products{
   padding: 10px 20px;
 }
 div.category{
+  width: 100%;
   border: 1px solid #F7F7F0;
   margin-bottom: 35px;
   margin-top: 20px;
@@ -210,6 +211,7 @@ div.category{
   padding-top: 15px;
   width: 262px;
   height: 358px;
+  align-items: center;
 }
 
 div.panel_heading>a{
@@ -218,9 +220,13 @@ div.panel_heading>a{
 }
 
 div.penel{
-  width: 80%;
-  padding: 6px 10px;
+  width: 100%;
+  padding: 8px 10px;
   text-align: left;
+}
+div.penel:hover{
+  background-color: #fe980f;
+
 }
 
 div.Products_view{
@@ -383,7 +389,9 @@ h2.Price{
 .Products_view2>p{
   text-align: center;
 }
-
+.pull-right{
+  float: right;
+}
 
 
 /*************************

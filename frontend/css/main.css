@@ -14,6 +14,7 @@ div.header {
   position: fixed;
   background-color: #f0f0e9;
   padding: 0 20px;
+  z-index: 999;
 }
 div.row {
   display: flex;
@@ -392,6 +393,63 @@ h2.Price{
 .pull-right{
   float: right;
 }
+
+.btn{
+  color: white;
+  font-size: 16px;
+}
+
+/* slider css */
+
+.slider{
+  max-width: 100%;
+  height: 410px;
+  z-index: -999;
+  
+}
+.content_slider{
+  width: 50%;
+  height: 99%;
+  text-align: left;
+  background-color: #ccc;
+  padding: 20px 60px;
+}
+.content_slider>h3{
+  margin: 30px auto;
+}
+.slider_img{
+  width: 50%;
+
+}
+.slider_img>img{
+  width: 484px;
+}
+.get_item{
+  border: black 1px solid;
+  width: 100px;
+  margin: 30px;
+  margin-left: 100px;
+  padding: 3px 10px;
+  align-items: center;
+}
+.get_item:hover{
+  background-color: #fe980f;
+  transition: all ease-in-out 0.5s;
+  color: white;
+  
+}
+.logo_slider{
+  width: 200px;
+
+}
+
+.content_slider>p{
+  letter-spacing: 0.8px;
+  line-height: 25px;
+}
+
+
+
 
 
 /*************************

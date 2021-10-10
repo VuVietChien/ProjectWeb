@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../frontend/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../frontend/css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="../frontend/css/swiper.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
     <title>Trang chu</title>
 </head>
 <body>
+    
     <div class="header">
         <div class="header-top">
             <div class="row">
@@ -50,7 +56,7 @@
                         <li><a href="../frontend/Index.html">Home</a></li>
                         <li class="shop"><a href="#">Shop <i class="ti-angle-down"></i></a>
                             <ul class="list-option">
-                                <li><a href="#">Product</a></li>
+                                <li><a href="../frontend/product.html">Product</a></li>
                                 <li><a href="../frontend/Product-details.html">Products details</a></li>
                                 <li><a href="#">Checkout</a></li>
                                 <li><a href="#">Cart</a></li>
@@ -80,15 +86,74 @@
 
 
     <section class="Content">
-        <section class="slider">
-            <div class="slider_img">
-                <img class="img" src="" alt="">
-                <img class="img" src="" alt="">
-                <img class="img" src="" alt="">
-                <img class="img" src="" alt="">
-            </div>
-        </section>
-
+        <div class="slider">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                      <div class="content_slider">
+                          <div class="logo_slider">
+                            <img class="logo" src="../frontend/image/logo.png" alt="#">
+                          </div>
+                          <h3>Mẫu thương mại điện tử miễn phí</h3>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                          <div class="get_item">Get Now</div>
+                      </div>
+                      <div class="slider_img">
+                        <img src="../frontend/image/img_Slider/tải xuống (1).jfif" alt="">
+                      </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="content_slider">
+                        <div class="logo_slider">
+                          <img class="logo" src="../frontend/image/logo.png" alt="#">
+                        </div>
+                        <h3>Mẫu thương mại điện tử miễn phí</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="get_item">Get Now</div>
+                    </div>
+                    <div class="slider_img">
+                      <img src="../frontend/image/img_Slider/tải xuống (2).jfif" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="content_slider">
+                        <div class="logo_slider">
+                          <img class="logo" src="../frontend/image/logo.png" alt="#">
+                        </div>
+                        <h3>Mẫu thương mại điện tử miễn phí</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="get_item">Get Now</div>
+                    </div>
+                    <div class="slider_img">
+                      <img src="../frontend/image/img_Slider/tải xuống.jfif" alt="">
+                    </div>
+                </div>
+                
+                </div>
+                <div class="btn swiper-button-next"></div>
+                <div class="btn swiper-button-prev"></div>
+                <div class="btn swiper-pagination"></div>
+              </div>
+        </div>
+    
+        <!-- Swiper JS -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+        <!-- Initialize Swiper -->
+        <script>
+          var swiper = new Swiper(".mySwiper", {
+            pagination: {
+              el: ".swiper-pagination",
+              type: "fraction",
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+          });
+        </script>
+                
+            
 
         <section class="Products">
             <div class="left-products">
@@ -401,5 +466,6 @@
             </div>
        </div>
     </footer>
+    
 </body>
 </html>

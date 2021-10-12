@@ -231,8 +231,8 @@ div.col-4{
     font-size: 18px;
     text-align: center;
     padding: 10px 0;
-    margin-bottom: 30px;
-    background-color: antiquewhite;
+    margin-bottom: 20px;
+    color: #FE980F;
 }
 
 .sliderbar-1,.sliderbar-2{
@@ -270,9 +270,7 @@ div.col-4{
     display: inline;
     float: right;
 }
-.sliderbar-2 a{
-    border-bottom: 2px solid #F5F5F5;
-}
+
 
 .sliderbar3{
     margin-top: 60px;

@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="../frontend/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="./css/Product-details.css">
     <title>Trang chu</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script type="text/javascript">
+    $(() =>{
+        $('div img').click(function(){
+            let imgPath=$(this).attr('src');
+            $('#img-main').attr('src',imgPath);
+        })
+    })
+    </script>
 </head>
 <body>
     <div class="shop">
@@ -145,10 +155,10 @@
         <div class="Products">
             <div class="products-sp">
                 <div class="products_anh">
-                    <img class="to" src="./image/Ao_thun_chay_bo_3_Soc_Own_The_Run_DJen_H36450_21_model.jpg" alt="">
+                    <img class="to" src="./image/Ao_thun_chay_bo_3_Soc_Own_The_Run_DJen_H36450_21_model.jpg"  id="img-main"/>
                     <div class="products_anh-nho">
-                        <img class="nho" src="./image/ao2.jpg" alt="">
-                        <img class="nho" src="./image/Ao_thun_chay_bo_3_Soc_Own_The_Run_DJen_H36450_21_model.jpg" alt="">
+                        <img class="nho" src="./image/ao2.jpg" id="nho">
+                        <img class="nho" src="./image/Ao_thun_chay_bo_3_Soc_Own_The_Run_DJen_H36450_21_model.jpg" id="be" >
                     </div>
                 </div>
 

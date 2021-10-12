@@ -239,6 +239,9 @@ div.col-4{
     border: 2px solid #F5F5F5;
     padding: 10px 0;
 }
+.mncap2 i{
+    float: right;
+}
 .sliderbar-1>ul>li, .sliderbar-2>ul>li{
     padding: 10px 20px;
 }
@@ -265,7 +268,7 @@ div.col-4{
 }
 .sliderbar-2 p{
     display: inline;
-    margin-left: 20px;
+    float: right;
 }
 .sliderbar-2 a{
     border-bottom: 2px solid #F5F5F5;
@@ -306,6 +309,13 @@ a{
     display: flex;
     justify-content: center;
     cursor: pointer;
+}
+#nho:hover {
+    border:1px solid red;
+}
+
+#be:hover {
+    border:1px solid red;
 }
 
 .products_tt{
@@ -532,7 +542,7 @@ a{
     width: 260px;
 }
 .sqlqtt{
-    margin: 10px 20px;
+    margin: 20px 20px;
 }
 .sqlqtt h4{
     margin-bottom: 5px;

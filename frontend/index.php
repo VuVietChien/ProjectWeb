@@ -4,6 +4,7 @@ $sql = "SELECT * FROM categories";
 $categories = $connection->query($sql);
 $sql1 = "SELECT * FROM sliders";
 $sliders = $connection->query($sql1);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +20,7 @@ $sliders = $connection->query($sql1);
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet" />
-  <title>Trang chu</title>
+  <title>Trang chủ</title>
 </head>
 
 <body>
@@ -74,11 +75,11 @@ $sliders = $connection->query($sql1);
             <li class="shop">
               <a href="#">Cửa hàng <i class="ti-angle-down"></i></a>
               <ul class="list-option">
-                <li><a href="../frontend/product.html">Sản phẩm</a></li>
+                <!-- <li><a href="../frontend/product.php">Sản phẩm</a></li>
                 <li>
-                  <a href="../frontend/Product-details.html">Chi tiết sản phẩm</a>
-                </li>
-                <li><a href="#">Thanh toán</a></li>
+                  <a href="../frontend/product-details.php">Chi tiết sản phẩm</a>
+                </li> -->
+                <li><a href="../frontend/cart.php">Thanh toán</a></li>
                 <li><a href="#">Giỏ hàng</a></li>
               </ul>
             </li>
@@ -108,23 +109,23 @@ $sliders = $connection->query($sql1);
     <div class="slider">
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <?php while($slider = $sliders->fetch_assoc()) :?>
-          <div class="swiper-slide">
-            <div class="content_slider">
-              <div class="logo_slider">
-                <img class="logo" src="../frontend/image/logo.png" alt="#" />
+          <?php while ($slider = $sliders->fetch_assoc()) : ?>
+            <div class="swiper-slide">
+              <div class="content_slider">
+                <div class="logo_slider">
+                  <img class="logo" src="../frontend/image/logo.png" alt="#" />
+                </div>
+                <h3><?= $slider['title'] ?></h3>
+                <p>
+                  <?= $slider['content'] ?>
+                </p>
+                <div class="get_item">Get Now</div>
               </div>
-              <h3><?=$slider['title']?></h3>
-              <p>
-              <?=$slider['content']?>
-              </p>
-              <div class="get_item">Get Now</div>
+              <div class="slider_img">
+                <img src="../frontend/image/img_Slider/<?= $slider['image'] ?>" alt="" />
+              </div>
             </div>
-            <div class="slider_img">
-              <img src="../frontend/image/img_Slider/<?=$slider['image']?>" alt="" />
-            </div>
-          </div>
-          <?php endwhile?>
+          <?php endwhile ?>
         </div>
         <div class="btn swiper-button-next"></div>
         <div class="btn swiper-button-prev"></div>
@@ -150,48 +151,12 @@ $sliders = $connection->query($sql1);
     </script>
 
     <section class="Products">
-      <div class="left-products">
-        <h2 class="title">THỂ LOẠI</h2>
-        <div class="category">
-          <?php while ($category = $categories->fetch_assoc()) : ?>
-            <div class="penel">
-              <div class="panel_heading">
-                <a href="product.php?id=<?= $category['id'] ?>"><?= $category['name'] ?></a>
-              </div>
-            </div>
-          <?php endwhile ?>
-        </div>
-        <h2 class="title">CÁC HÃNG</h2>
-        <div class="category">
-          <div class="penel">
-            <div class="panel_heading"><a href="#">NIKE</a></div>
-          </div>
-          <div class="penel">
-            <div class="panel_heading"><a href="#">ADIDAS</a></div>
-          </div>
-          <div class="penel">
-            <div class="panel_heading"><a href="#">JORDAN</a></div>
-          </div>
-          <div class="penel">
-            <div class="panel_heading"><a href="#">PUMA</a></div>
-          </div>
-          <div class="penel">
-            <div class="panel_heading"><a href="#">UNDER ARMOUR</a></div>
-          </div>
-          <div class="penel">
-            <div class="panel_heading"><a href="#">KAPPA</a></div>
-          </div>
-          <div class="penel">
-            <div class="panel_heading"><a href="#">FILA</a></div>
-          </div>
-        </div>
-        <div class="shipping">
-          <img src="../frontend/image/shipping.jpg" alt="#" />
-        </div>
-      </div>
+      <?php
+      include("./includes/sidebar.php")
+      ?>
 
       <div class="right-products">
-        <h2 class="title">Sản Phẩm</h2>
+        <h2 class="title">SẢN PHẨM</h2>
         <div class="product_up">
           <div class="Products_view">
             <img src="../frontend/image/Ao_thun_chay_bo_3_Soc_Own_The_Run_DJen_H36450_21_model.jpg" alt="#" />
@@ -365,26 +330,8 @@ $sliders = $connection->query($sql1);
         </div>
 
         <div class="recomended">
-          <h2 class="title">Gợi Ý Cho Bạn</h2>
+          <h2 class="title">SẢN PHẨM BÁN CHẠY</h2>
           <div class="recomended-products">
-            <div class="Products_view2">
-              <img src="../frontend/image/Ao_thun_chay_bo_3_Soc_Own_The_Run_DJen_H36450_21_model.jpg" alt="#" />
-              <h2 class="Price">$56</h2>
-              <p class="name_product">Áo polo thể thao nam</p>
-              <div class="add_Cart">
-                <i class="ti-shopping-cart"></i>
-                <a class="a_sell" href="#">Add to cart</a>
-              </div>
-            </div>
-            <div class="Products_view2">
-              <img src="../frontend/image/Ao_thun_chay_bo_3_Soc_Own_The_Run_DJen_H36450_21_model.jpg" alt="#" />
-              <h2 class="Price">$56</h2>
-              <p class="name_product">Áo polo thể thao nam</p>
-              <div class="add_Cart">
-                <i class="ti-shopping-cart"></i>
-                <a class="a_sell" href="#">Add to cart</a>
-              </div>
-            </div>
             <div class="Products_view2">
               <img src="../frontend/image/Ao_thun_chay_bo_3_Soc_Own_The_Run_DJen_H36450_21_model.jpg" alt="#" />
               <h2 class="Price">$56</h2>

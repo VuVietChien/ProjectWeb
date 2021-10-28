@@ -1,6 +1,7 @@
 <?php
 include "../db/database.php";
 session_start();
+$db = new Database();
 
 if (isset($_POST['addToCart'])) {
   $product_name = $_POST['product_name'];
@@ -11,7 +12,7 @@ if (isset($_POST['addToCart'])) {
 
   // Lay gio hang theo san pham 
   $sql3 = "SELECT * FROM carts WHERE product_id={$product_id}";
-  $cartListProductId = $connection->query($sql3);
+  $cartListProductId = $db->connection->query($sql3);
   if ($cartListProductId->num_rows > 0) {
     $row_product = $cartListProductId->fetch_assoc();
     $product_quantity = $row_product['product_quantity'] + 1;
@@ -19,7 +20,7 @@ if (isset($_POST['addToCart'])) {
   } else {
     $sql4 = "INSERT INTO carts (product_name, product_id, product_price, product_image, product_quantity) VALUES ('{$product_name}',{$product_id},'{$product_price}','{$product_image}',{$product_quantity})";
   }
-  $insert_product_cart = $connection->query($sql4);
+  $insert_product_cart = $db->connection->query($sql4);
   if ($insert_product_cart == 0) {
     header('Location: product-details.php?id=' . $product_id);
   }
@@ -31,15 +32,15 @@ if (isset($_POST['addToCart'])) {
     $product_id = $_POST['product_id'][$i];
     $product_quantity = $_POST['product_quantity'][$i];
     $sql5 = "UPDATE carts SET product_quantity={$product_quantity} WHERE product_id={$product_id}";
-    $connection->query($sql5);
+    $db->connection->query($sql5);
   }
 } else if ($_GET['xoa']) {
   $id = $_GET['xoa'];
   $sql6 = "DELETE FROM carts WHERE id={$id}";
-  $connection->query($sql6);
+  $db->connection->query($sql6);
 }
 $sql2 = "SELECT * FROM carts ORDER BY id DESC";
-$cartList = $connection->query($sql2);
+$cartList = $db->connection->query($sql2);
 
 
 // if ($count > 0) {

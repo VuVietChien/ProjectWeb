@@ -1,5 +1,7 @@
 <?php
 include "../db/database.php";
+$db = new Database();
+
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     header("Location: 404.php");
 } else {
@@ -11,9 +13,9 @@ WHERE categories.id = products.category_id AND
 products.category_id={$idCategory}";
 $sql1 = "SELECT * FROM categories WHERE id={$idCategory}";
 $sql2 = "SELECT * FROM categories";
-$categories = $connection->query($sql2);
-$products = $connection->query(($sql));
-$category = $connection->query($sql1);
+$categories = $db->connection->query($sql2);
+$products = $db->connection->query(($sql));
+$category = $db->connection->query($sql1);
 $rowCategory = $category->fetch_assoc();
 
 ?>

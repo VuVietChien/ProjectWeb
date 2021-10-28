@@ -1,13 +1,54 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sportstore";
+class Database
+{
+  public $servername = "localhost";
+  public $username = "root";
+  public $password = "";
+  public $dbname = "sportstore";
+  public $connection;
 
-// Create connection
-$connection = new mysqli($servername, $username, $password, $dbname);
-$connection -> set_charset("utf8");
-// Check connection
-if ($connection->connect_error) {
-  die("Connection failed: " . $connection->connect_error);
+  public function __construct()
+  {
+    $this->connectDB();
+  }
+  public function connectDB()
+  {
+    $this->connection = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+    $this->connection->set_charset("utf8");
+    if ($this->connection->connect_error) {
+      die("Connection failed: " . $this->connection->connect_error);
+    }
+  }
+  // insert, update, delete
+  public function execute($sql)
+  {
+    $this->connection->query($sql);
+    $this->connection->close();
+  }
+
+  // select
+  public function executeResult($sql, $isSingle = false)
+  {
+    $data = null;
+    $resultSet = $this->connection->query($sql);
+    if ($isSingle) { // lay 1 ban ghi
+      $data = $resultSet->fetch_assoc();
+    } else { // lay danh sach
+      $data = [];
+      while ($row = $resultSet->fetch_assoc()) {
+        $data[] = $row;
+      }
+    }
+    return $data;
+  }
 }
+
+
+
+// // Create connection
+// $connection = new mysqli($servername, $username, $password, $dbname);
+// $connection->set_charset("utf8");
+// // Check connection
+// if ($connection->connect_error) {
+//   die("Connection failed: " . $connection->connect_error);
+// }

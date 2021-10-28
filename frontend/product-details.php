@@ -1,16 +1,18 @@
 <?php
 session_start();
 include "../db/database.php";
+$db = new Database();
+
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     header("Location: 404.php");
 } else {
     $idProductDetail = $_GET['id'];
 }
 $sql1 = "SELECT * FROM categories";
-$categories = $connection->query($sql1);
+$categories = $db->connection->query($sql1);
 
 $sql2 = "SELECT * FROM products WHERE id={$idProductDetail}";
-$productDetail = $connection->query($sql2);
+$productDetail = $db->connection->query($sql2);
 $rowProductDetail = $productDetail->fetch_assoc();
 ?>
 <!DOCTYPE html>

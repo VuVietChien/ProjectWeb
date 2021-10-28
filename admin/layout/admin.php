@@ -1,3 +1,14 @@
+<?php
+include_once '../../db/database.php';
+include_once '../../utils/utility.php';
+
+$user = Utility::getUserToken();
+if ($user == null) {
+    header("Location:../authen/login.php");
+    die();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,12 +31,15 @@
     <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- My css -->
+    <link rel="stylesheet" href="dist/css/styles.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -48,7 +62,7 @@
             </ul>
 
             <!-- Right navbar links -->
-        
+
         </nav>
         <!-- /.navbar -->
 
@@ -69,6 +83,7 @@
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="../authen/logout.php" onclick="return confirm('Bạn có muốn đăng xuất không?')" class="d-block btn-logout">Đăng xuất</a>
                     </div>
                 </div>
 
@@ -126,7 +141,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
+                            <h1 class="m-0">Trang quản trị</h1>
                         </div>
                     </div>
                 </div>

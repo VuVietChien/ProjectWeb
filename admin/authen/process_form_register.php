@@ -1,8 +1,8 @@
 <?php
-include_once '../../utils/utility.php';
-include_once "../../db/database.php";
-$fullname = $email = $msg = '';
+include_once '../../db/database.php';
+include_once "../../utils/utility.php";
 $db = new Database();
+$fullname = $email = $msg = '';
 if (!empty($_POST)) {
     $fullname = Utility::getPost('fullname');
     $email = Utility::getPost('email');
@@ -16,11 +16,12 @@ if (!empty($_POST)) {
             $msg = "Email đã tồn tại, vui lòng nhập email khác";
         } else {
             $created_at = $updated_at = date('Y-m-d H:i:s');
-            $password = Utility::getSecurityMD5($password);
+            $password = getSecurityMD5($password);
             $sql = "INSERT INTO users (fullname,email,password,role_id,created_at,updated_at) VALUES ('$fullname','$email','$password',2,'$created_at','$updated_at')";
             $db->execute($sql);
-            header("Location: login.php");
-            die();
+            $msg1 = "Đăng ký tài khoản thành công!!!";
+            $fullname = '';
+            $email = '';
         }
     }
 }

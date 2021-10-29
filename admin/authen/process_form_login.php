@@ -1,9 +1,9 @@
 <?php
-include_once '../../utils/utility.php';
-include_once "../../db/database.php";
-
-$password = $email = $msg = '';
+// include_once '../../database/dbhelper.php';
+include_once '../../db/database.php';
+include_once "../../utils/utility.php";
 $db = new Database();
+$password = $email = $msg = '';
 if (!empty($_POST)) {
     $email = Utility::getPost('email');
     $password = Utility::getPost('password');
@@ -22,7 +22,7 @@ if (!empty($_POST)) {
             $userId = $userExist['id'];
             $sql = "INSERT INTO tokens (user_id,token,created_at) VALUES ($userId,'$token','$created_at')";
             $db->execute($sql);
-            header("Location: ../layout/admin.php ");
+            header("Location: ../index.php ");
             die();
         }
     }

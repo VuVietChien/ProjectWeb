@@ -1,11 +1,12 @@
 <?php
 session_start();
 include_once '../../utils/utility.php';
-include_once "../../db/database.php";
-
+// include_once '../../database/dbhelper.php';
+include_once '../../db/database.php';
+include_once "./process_form_register.php";
 $user = Utility::getUserToken();
 if ($user != null) {
-    header("Location: ../layout/admin.php");
+    header("Location: ../index.php");
     die();
 }
 ?>
@@ -32,12 +33,13 @@ if ($user != null) {
             <div class="signup-content">
                 <form method="POST" id="signup-form" class="signup-form" onsubmit="return validateForm()">
                     <h2>Đăng ký tài khoản</h2>
-                    <h3 style="color:red"><?= $msg ?></h3>
+                    <h3 style="color:red"><?= isset($msg) ? $msg : '' ?></h3>
+                    <h3 style="color:green"><?= isset($msg1) ? $msg1 : '' ?></h3>
                     <div class="form-group">
-                        <input type="text" class="form-input" name="fullname" id="fullname" placeholder="Tên của bạn" value="<?= $fullname ?>" />
+                        <input type="text" class="form-input" name="fullname" id="fullname" placeholder="Tên của bạn" value="<?= isset($fullname) ? $fullname : '' ?>" />
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-input" name="email" id="email" placeholder="Nhập email" value="<?= $email ?>" />
+                        <input type="email" class="form-input" name="email" id="email" placeholder="Nhập email" value="<?= isset($email) ? $email : '' ?>" />
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-input" name="password" id="password" placeholder="Nhập mật khẩu" minlength="6" />

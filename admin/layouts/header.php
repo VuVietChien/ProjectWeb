@@ -2,7 +2,6 @@
 include_once  $baseUrl . '../db/database.php';
 // include_once $baseUrl . '../database/dbhelper.php';
 include_once $baseUrl . '../utils/utility.php';
-
 $user = Utility::getUserToken();
 if ($user == null) {
     header("Location:'.$baseUrl.'/authen/login.php");
@@ -168,7 +167,7 @@ if ($user == null) {
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../user/index.php" class="nav-link ">
+                                    <a href="<?= $baseUrl ?>./user/index.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Danh sách người dùng</p>
                                     </a>

@@ -42,7 +42,7 @@ if ($user != null) {
                         <input type="email" class="form-input" name="email" id="email" placeholder="Nhập email" value="<?= isset($email) ? $email : '' ?>" />
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-input" name="password" id="password" placeholder="Nhập mật khẩu" minlength="6" />
+                        <input type="password" class="form-input" name="password" id="password" placeholder="Nhập mật khẩu" minlength="1" />
                         <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
                     </div>
                     <div class="form-group">

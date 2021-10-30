@@ -10,7 +10,7 @@ if (!empty($_POST)) {
     $password = Utility::getSecurityMD5($password);
     if (empty($email) || empty($password)) {
     } else {
-        $userExist = $db->executeResult("SELECT * FROM users WHERE email='{$email}' AND password='$password'", true);
+        $userExist = $db->executeResult("SELECT * FROM users WHERE email='{$email}' AND password='$password' AND deleted=0", true);
         if ($userExist == null) {
             $msg = "Tên email hoặc mật khẩu không hợp lệ, vui lòng kiểm tra lại";
         } else {

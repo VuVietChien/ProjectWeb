@@ -23,7 +23,6 @@ class Database
   public function execute($sql)
   {
     $this->connection->query($sql);
-    $this->connection->close();
   }
 
   // select

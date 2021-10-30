@@ -4,7 +4,7 @@ include_once  $baseUrl . '../db/database.php';
 include_once $baseUrl . '../utils/utility.php';
 $user = Utility::getUserToken();
 if ($user == null) {
-    header("Location:'.$baseUrl.'/authen/login.php");
+    header("Location:./authen/login.php");
     die();
 }
 
@@ -193,6 +193,29 @@ if ($user == null) {
                                     <a href="./index.html" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Danh sách đơn hàng</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Quản lý quyền
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= $baseUrl ?>./roles/editor.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm quyền</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= $baseUrl ?>./roles/index.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách quyền</p>
                                     </a>
                                 </li>
                             </ul>

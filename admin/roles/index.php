@@ -31,8 +31,8 @@ $data = $db->executeResult($sql);
                                     <th scope="row"><?= ++$index ?></th>
                                     <td><?= $item['name'] ?></td>
                                     <td>
-                                        <a href="" class="btn btn-warning">Sửa</a>
-                                        <a href="" class="btn btn-danger">Xoá</a>
+                                        <a href="./editor.php?id=<?= $item['id'] ?>" class="btn btn-warning">Sửa</a>
+                                        <button onclick="deleteUser(<?= $item['id'] ?>)" class="btn btn-danger">Xoá</button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
@@ -49,6 +49,21 @@ $data = $db->executeResult($sql);
 <aside class="control-sidebar control-sidebar-dark">
 </aside>
 </div>
+
+<script>
+    function deleteUser(id) {
+        option = confirm('Bạn có chắc chắn muốn xoá quyền này không?');
+        if (!option) {
+            return;
+        }
+        $.post('form_api.php', {
+            'id': id,
+            'action': 'delete'
+        }, function(data) {
+            location.reload();
+        })
+    }
+</script>
 <?php
 include_once '../layouts/footer.php';
 ?>

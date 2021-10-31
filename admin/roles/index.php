@@ -1,9 +1,9 @@
 <?php
-$title = "Trang Quản Danh mục";
+$title = "Trang Quản lý quyền";
 $baseUrl = '../';
 include_once '../layouts/header.php';
 $db = new Database();
-$sql = "SELECT * FROM categories";
+$sql = "SELECT * FROM roles";
 $data = $db->executeResult($sql);
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -13,13 +13,13 @@ $data = $db->executeResult($sql);
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-md-12">
-                    <h1 class="m-0 mb-3">Danh sách danh mục</h1>
-                    <a href="editor.php" class="btn btn-success">Thêm danh mục</a>
+                    <h1 class="m-0 mb-3">Danh sách Quyền</h1>
+                    <a href="editor.php" class="btn btn-success">Thêm quyền</a>
                     <table class="table table-hover mt-5 table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">STT</th>
-                                <th scope="col">Tên danh mục</th>
+                                <th scope="col">Tên quyền</th>
                                 <th scope="col">Hành động</th>
                             </tr>
                         </thead>

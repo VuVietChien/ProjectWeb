@@ -15,18 +15,18 @@ if(!empty($_POST)) {
 
 	if($id > 0) {	
 	//update
-		if($image != '') {
+/*		if($image != '') {
 			$sql = "UPDATE products set image = '$image', name = '$name', price = '$price', brand = '$brand', description = '$description', quantity = $quantity, category_id = '$category_id' active= $active where id = $id";
 			$db->execute($sql);			  
 			$msgsuccess = "Sửa thành công";
 			
-		} 
-		else {
-			$sql = "UPDATE products set name = '$name', price = '$price', brand = '$brand', description = '$description', active = $active, category_id = '$category_id' , quantity = $quantity where id = $id";
+		} */
+	//	else {
+			$sql = "UPDATE products set  image = '$image', name = '$name', price = '$price', brand = '$brand', description = '$description', active = $active, category_id = '$category_id' , quantity = $quantity where id = $id";
 			$db->execute($sql);
 			$msgsuccess = "Sửa thành công";
 			
-		}
+	//	}
 	
 	} else {
 		//insert

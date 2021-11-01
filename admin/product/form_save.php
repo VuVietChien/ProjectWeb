@@ -31,7 +31,7 @@ if(!empty($_POST)) {
 	} else {
 		//insert
 		$sql = "insert into products(image, name, price, brand, description, quantity, active, deleted, category_id)
-		values ('$image', '$name', '$price', '$brand', '$description', '$quantity', '$active', 0, 
+		values ('$image', '$name', '$price', '$brand', '$description', '$quantity', $active, 0, 
 		$category_id)";
 		$db->execute($sql);
 		$msgsuccess = "Thêm thành công";

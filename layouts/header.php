@@ -1,14 +1,16 @@
 <?php
-	session_start();
-	require_once('utils/utility.php');
-	require_once('database/dbhelper.php');
+session_start();
+include_once($baseUrl . './utils/utility.php');
+include_once($baseUrl . './db/database.php');
 
-	$sql = "select * from Category";
-	$menuItems = executeResult($sql);
+$db = new Database();
+$sql = "select * from categories";
+$menuItems = $db->executeResult($sql);
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,6 +37,7 @@
 			color: #28a745;
 			margin-top: 20px;
 		}
+
 		.nav li a {
 			color: #28a745;
 			font-weight: bold;
@@ -89,27 +92,28 @@
 		}
 	</style>
 </head>
+
 <body>
-<!-- Menu START -->
-<div class="container">
-	<ul class="nav">
-		<li class="nav-item" style="margin-top: 0px !important;">
-			<a href="index.php"><img src="https://t004.gokisoft.com/uploads/2021/07/1-s-1636-logo-web.jpg" style="height: 80px;"></a>
-		</li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="index.php">Trang Chủ</a>
-	  </li>
-	  <?php
-	  	foreach($menuItems as $item) {
-	  		echo '<li class="nav-item">
-				    <a class="nav-link" href="category.php?id='.$item['id'].'">'.$item['name'].'</a>
+	<!-- Menu START -->
+	<div class="container">
+		<ul class="nav" style="width: 102%;">
+			<li class="nav-item" style="margin-top: 0px !important;">
+				<a href="index.php"><img src="https://t004.gokisoft.com/uploads/2021/07/1-s-1636-logo-web.jpg" style="height: 80px;"></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="index.php">Trang Chủ</a>
+			</li>
+			<?php
+			foreach ($menuItems as $item) {
+				echo '<li class="nav-item">
+				    <a class="nav-link" href="category.php?id=' . $item['id'] . '">' . $item['name'] . '</a>
 				  </li>';
-	  	}
-	  ?>
-	  
-	  <li class="nav-item">
-	    <a class="nav-link" href="contact.php">Liên Hệ</a>
-	  </li>
-	</ul>
-</div>
-<!-- Menu Stop -->
+			}
+			?>
+
+			<li class="nav-item">
+				<a class="nav-link" href="contact.php">Liên Hệ</a>
+			</li>
+		</ul>
+	</div>
+	<!-- Menu Stop -->

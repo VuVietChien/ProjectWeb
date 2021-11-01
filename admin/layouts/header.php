@@ -19,7 +19,8 @@ if ($user == null) {
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?= $baseUrl ?>plugins/fontawesome-free/css/all.min.css">
+    <!-- <link rel="stylesheet" href="<?= $baseUrl ?>plugins/fontawesome-free/css/all.min.css"> -->
+    <link href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css" rel="stylesheet">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -105,7 +106,7 @@ if ($user == null) {
                with font-awesome or any other icon font library -->
                         <li class="nav-item ">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fa fa-list-alt"></i>
                                 <p>
                                     Quản lý danh mục
                                     <i class="right fas fa-angle-left"></i>
@@ -128,7 +129,7 @@ if ($user == null) {
                         </li>
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fab fa-product-hunt"></i>
                                 <p>
                                     Quản lý sản phẩm
                                     <i class="right fas fa-angle-left"></i>
@@ -152,7 +153,7 @@ if ($user == null) {
 
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản lý người dùng
                                     <i class="right fas fa-angle-left"></i>
@@ -175,7 +176,7 @@ if ($user == null) {
                         </li>
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-shopping-cart"></i>
                                 <p>
                                     Quản lý đơn đặt hàng
                                     <i class="right fas fa-angle-left"></i>
@@ -198,7 +199,7 @@ if ($user == null) {
                         </li>
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-user-tag"></i>
                                 <p>
                                     Quản lý quyền
                                     <i class="right fas fa-angle-left"></i>

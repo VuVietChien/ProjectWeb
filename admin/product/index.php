@@ -4,12 +4,7 @@ $title = "Trang Quản lý người dùng";
 $baseUrl = '../';
 include_once '../layouts/header.php';
 $db = new Database();
-if(isset($_GET['search']) && $_GET['search'] !='')
-                            {
 
-  $sql = "SELECT * FROM products WHERE name LIKE N'%".$_GET['search']."%'";
-  
-                            }
                             
 $sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.deleted = 0";
 

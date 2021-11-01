@@ -3,9 +3,8 @@
 $title = "Trang Quản lý người dùng";
 $baseUrl = '../';
 include_once '../layouts/header.php';
-$db = new Database();
+$db = new Database();               
 
-                            
 $sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.deleted = 0";
 
 $data = $db->executeResult($sql);
@@ -41,6 +40,7 @@ $data = $db->executeResult($sql);
                                 <th scope="col">Tên sản phẩm</th>
                                 <th scope="col">Giá</th>
                                 <th scope="col">Danh mục</th>
+                                <th scope="col">Kích hoạt</th>
                                 <th scope="col">Hành động</th>
                             </tr>
                         </thead>
@@ -56,6 +56,7 @@ $data = $db->executeResult($sql);
                                     <td><?= $item['name'] ?></td>
                                     <td><?= number_format($item['price']) ?>VNĐ</td>
                                     <td><?= $item['category_name']?></td>
+                                    <td > <?= $item['active'] ==0 ? "<span style='color:red'>Không kích hoạt</span>" : "<span style='color:green'>Kích hoạt</span>" ;?> </td>
                                     
                                     <td>
                                         <a href="./editor.php?id=<?= $item['id'] ?>" class="btn btn-warning">Sửa</a>

@@ -3,8 +3,17 @@ $title = "Trang Quản lý người dùng";
 $baseUrl = '../';
 include_once '../layouts/header.php';
 $db = new Database();
-$sql = "SELECT users.*,roles.name as role_name FROM users,roles WHERE users.role_id=roles.id AND users.deleted=0 ORDER BY id DESC";
+$page = 1;
+$page = Utility::getGet('page');
+$page <= 0 ? $page = 1 : $page;
+$page_number_max = 5;
+$currentIndex = ($page - 1) * $page_number_max;
+$sql = "SELECT users.*,roles.name as role_name FROM users,roles  WHERE users.role_id=roles.id AND users.deleted=0 ORDER BY id DESC LIMIT $currentIndex, $page_number_max";
 $data = $db->executeResult($sql);
+$sql = "SELECT COUNT(*) as 'Total' from users";
+$result = $db->executeResult($sql);
+$total = $result[0]['Total'];
+$numPages = ceil($total / $page_number_max);
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -51,9 +60,9 @@ $data = $db->executeResult($sql);
                                     <td><?= $item['address'] ?></td>
                                     <td><?= $item['role_name'] ?></td>
                                     <td>
-                                        <a href="./editor.php?id=<?= $item['id'] ?>" class="btn btn-warning">Sửa</a>
+                                        <a href="./editor.php?id=<?= $item['id'] ?>" class="btn btn-warning"><i class="far fa-edit"></i></a>
                                         <?php if ($user['id'] != $item['id'] && $item['role_id'] != 1) : ?>
-                                            <button onclick="deleteUser(<?= $item['id'] ?>)" class="btn btn-danger">Xoá</button>
+                                            <button onclick="deleteUser(<?= $item['id'] ?>)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -61,9 +70,44 @@ $data = $db->executeResult($sql);
 
                         </tbody>
                     </table>
+                    <!-- phan trang -->
+
+                    <?php $pageAvaiable = [1, 2, $page - 1, $page, $page + 1, $numPages - 1, $numPages];
+                    $isFirst = false;
+                    $isBefore = false;
+                    ?>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <?php if ($page > 1) : ?>
+                                <li class="page-item"><a class="page-link" href="?page=<?= ($page - 1) ?>">Previous</a></li>
+                            <?php endif ?>
+
+                            <?php
+                            for ($i = 1; $i <= $numPages && $numPages > 1; $i++) {
+                                if (!in_array($i, $pageAvaiable)) {
+                                    if ($i < $page && !$isFirst) {
+                                        echo '<li class="page-item"><a class="page-link" href="?page=' . ($page - 2) . '">...</a></li>';
+                                        $isFirst = true;
+                                    }
+                                    if ($i > $page && !$isBefore) {
+                                        echo '<li class="page-item"><a class="page-link" href="?page=' . ($page + 2) . '">...</a></li>';
+                                        $isBefore = true;
+                                    }
+                                    continue;
+                                }
+                                if ($i == $page) {
+                                    echo '<li class="page-item active"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                                } else {
+                                    echo '<li class="page-item"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                                }
+                            }
+                            ?>
+                            <?php if ($page < $numPages) : ?>
+                                <li class="page-item"><a class="page-link" href="?page=<?= ($page + 1) ?>">Next</a></li>
+                            <?php endif ?>
+                        </ul>
+                    </nav>
                 </div>
-
-
             </div>
         </div>
     </div>

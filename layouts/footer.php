@@ -60,7 +60,7 @@ foreach($_SESSION['cart'] as $item) {
 <!-- Cart start -->
 <span class="cart_icon">
 	<span class="cart_count"><?=$count?></span>
-	<a href="cart.php"><img src="https://kenshin.com/img/cart.png"></a>
+	<a href="cart.php"><img src="https://gokisoft.com/img/cart.png"></a>
 </span>
 <!-- Cart stop -->
 </body>

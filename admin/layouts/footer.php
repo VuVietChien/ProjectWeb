@@ -32,6 +32,7 @@
     <script src="<?=$baseUrl?>dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="<?=$baseUrl?>dist/js/pages/dashboard.js"></script>
+    <script src="<?=$baseUrl?>plugins/ckeditor/ckeditor.js"></script>
 </body>
 
 </html>

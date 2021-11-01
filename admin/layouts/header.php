@@ -39,6 +39,8 @@ if ($user == null) {
     <link rel="stylesheet" href="<?= $baseUrl ?>plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="<?= $baseUrl ?>plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="<?= $baseUrl ?>plugins/ckeditor/">
+ 
 
 </head>
 

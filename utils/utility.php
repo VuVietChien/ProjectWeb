@@ -61,24 +61,27 @@ class Utility
     }
 }
 
-
+// Hàm di chuyển file (ảnh)
 function moveFile($key, $rootPath = "../../") {
+    // Không chọn file nào thì sẽ return về ''
     if(!isset($_FILES[$key]) || !isset($_FILES[$key]['name']) || $_FILES[$key]['name'] == '') {
         return '';
     }
 
-    $pathTemp = $_FILES[$key]["tmp_name"];
+    $pathTemp = $_FILES[$key]["tmp_name"]; // lấy đường dẫn tạm thời
 
-    $filename = $_FILES[$key]['name'];
-    //filename -> remove special character, ..., ...
+    $filename = $_FILES[$key]['name']; // lấy ra tên của cái ảnh vd:hello.jpg => hello
+    // Xử lý tên file tránh trường hợp người dùng đăng tên file có nhiều ký tự lạ
+    // Code ...
 
-    $newPath="assets/photos/".$filename;
+    $newPath="assets/photos/".$filename; // lưu ảnh vào folder
 
-    move_uploaded_file($pathTemp, $rootPath.$newPath);
+    move_uploaded_file($pathTemp, $rootPath.$newPath); // di chuyển cái $pathTemp sang đường dẫn mới
 
     return $newPath;
 }
 
+// fix đường dẫn khi link ảnh
 function fixUrl($thumbnail, $rootPath = "../../") {
     if(stripos($thumbnail, 'http://') !== false || stripos($thumbnail, 'https://') !== false) {
     } else {

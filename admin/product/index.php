@@ -4,7 +4,13 @@ $title = "Trang Quản lý người dùng";
 $baseUrl = '../';
 include_once '../layouts/header.php';
 $db = new Database();
+if(isset($_GET['search']) && $_GET['search'] !='')
+                            {
 
+  $sql = "SELECT * FROM products WHERE name LIKE N'%".$_GET['search']."%'";
+  
+                            }
+                            
 $sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.deleted = 0";
 
 $data = $db->executeResult($sql);
@@ -53,7 +59,7 @@ $data = $db->executeResult($sql);
                                     <td><img src="<?=fixUrl($item['image'])?>" style="max-height: 100px; margin-top: 5px; margin-bottom: 15px;"></td>
                                     
                                     <td><?= $item['name'] ?></td>
-                                    <td><?= $item['price'] ?></td>
+                                    <td><?= number_format($item['price']) ?>VNĐ</td>
                                     <td><?= $item['category_name']?></td>
                                     
                                     <td>

@@ -3,7 +3,7 @@ $title = 'Thêm/Sửa Sản Phẩm';
 $baseUrl = '../';
 require_once('../layouts/header.php');
 $db = new Database();
-$id = $thumbnail = $title = $price = $discount = $category_id = $description = '';
+$id = $thumbnail = $title = $price = $quantity = $category_id = $description = '';
 require_once('form_save.php');
 
 $id = Utility::getGet('id');
@@ -15,7 +15,7 @@ if($id != '' && $id > 0) {
     $title = $userItem['name'];
      $description = $userItem['description'];
     $price = $userItem['price'];
-    $discount = $userItem['quantity'];
+    $quantity = $userItem['quantity'];
     $category_id = $userItem['category_id'];
    
   } else {
@@ -66,14 +66,14 @@ $categoryItems = $db->executeResult($sql);
                     <div class="form-group">
                       <!-- Tên sản phẩm -->
                       <label for="usr">Tên Sản Phẩm:</label>
-                      <input required="true" type="text" class="form-control" id="usr" name="name" value="<?=$title?>">
+                      <input required="true" type="text" class="form-control" id="usr" placeholder="Nhập tên sản phẩm" name="name" value="<?=$title?>" >
                       <input type="text" name="id" value="<?=$id?>" hidden="true">
                     </div>
 
                     <!-- Nội dung -->
                     <div class="form-group">
                       <label for="pwd">Nội Dung:</label>
-                       <textarea class="form-control" rows="5" name="description" id="description"><?=$description?></textarea>
+                       <textarea class="form-control" rows="5" name="description" id="description" placeholder="Nhập nội dung sản phẩm"><?=$description?></textarea>
                     </textarea>
                   </div>
 
@@ -118,8 +118,8 @@ $categoryItems = $db->executeResult($sql);
 
 
                   <div class="form-group">
-                   <label for="discount">Chất lượng:</label>
-                   <input required="true" type="text" class="form-control" id="discount" name="quantity" value="<?=$discount?>">
+                   <label for="quantity">Chất lượng:</label>
+                   <input required="true" type="number" class="form-control" id="quantity" name="quantity" value="<?=$quantity?>">
                  </div>
 
 

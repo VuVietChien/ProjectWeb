@@ -22,16 +22,12 @@ if(!empty($_POST)) {
 			
 		} 
 		else {
-			$sql = "UPDATE products set name = '$name', price = '$price', brand = '$brand', description = '$description', active = '$active', category_id = '$category_id' where id = $id";
+			$sql = "UPDATE products set name = '$name', price = '$price', brand = '$brand', description = '$description', active = '$active', category_id = '$category_id' , quantity = '$quantity' where id = $id";
 			$db->execute($sql);
 			$msgsuccess = "Sửa thành công";
 			
 		}
-		
-		
-
-		//header('Location: ../../product/index.php');
-		//die();
+	
 	} else {
 		//insert
 		$sql = "insert into products(image, name, price, brand, description, quantity, active, deleted, category_id)

@@ -51,7 +51,6 @@ $menuItems = $db->executeResult($sql);
 		.product-item:hover {
 			background-color: #f5f6f7;
 			cursor: pointer;
-			margin-bottom: 10px;
 		}
 
 		footer {

@@ -40,7 +40,7 @@ if ($user == null) {
     <!-- summernote -->
     <link rel="stylesheet" href="<?= $baseUrl ?>plugins/summernote/summernote-bs4.min.css">
     <link rel="stylesheet" href="<?= $baseUrl ?>plugins/ckeditor/">
- 
+
 
 </head>
 
@@ -186,13 +186,13 @@ if ($user == null) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link ">
+                                    <a href="<?= $baseUrl ?>./order/editor.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Thêm đơn </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link ">
+                                    <a href="<?= $baseUrl ?>./order/index.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Danh sách đơn hàng</p>
                                     </a>

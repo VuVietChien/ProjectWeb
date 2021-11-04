@@ -39,6 +39,8 @@ if ($user == null) {
     <link rel="stylesheet" href="<?= $baseUrl ?>plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="<?= $baseUrl ?>plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="<?= $baseUrl ?>plugins/ckeditor/">
+
 
 </head>
 
@@ -82,7 +84,7 @@ if ($user == null) {
                         <img src="<?= $baseUrl ?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">Chiến dz cute</a>
                         <a href="<?= $baseUrl ?>./authen/logout.php" onclick="return confirm('Bạn có muốn đăng xuất không?')" class="d-block btn-logout">Đăng xuất</a>
                     </div>
                 </div>
@@ -184,13 +186,13 @@ if ($user == null) {
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link ">
+                                    <a href="<?= $baseUrl ?>./order/editor.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Thêm đơn </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link ">
+                                    <a href="<?= $baseUrl ?>./order/index.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Danh sách đơn hàng</p>
                                     </a>
@@ -216,6 +218,23 @@ if ($user == null) {
                                     <a href="<?= $baseUrl ?>./roles/index.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Danh sách quyền</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="fas fa-comments"></i>
+                                <p>
+                                      Quản lý phản hồi
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= $baseUrl ?>./feedback/index.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Danh sách phản hồi</p>
                                     </a>
                                 </li>
                             </ul>

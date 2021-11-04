@@ -3,12 +3,19 @@
 $title = "Trang Quản lý người dùng";
 $baseUrl = '../';
 include_once '../layouts/header.php';
-$db = new Database();               
-
-$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.deleted = 0";
+$db = new Database();
+$page = 1;
+$page = Utility::getGet('page');
+$page <= 0 ? $page = 1 : $page;
+$page_number_max = 5;
+$currentIndex = ($page - 1) * $page_number_max;
+$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.deleted = 0 ORDER BY id DESC LIMIT $currentIndex, $page_number_max";
 
 $data = $db->executeResult($sql);
-
+$sql = "SELECT COUNT(*) as 'Total' from products";
+$result = $db->executeResult($sql);
+$total = $result[0]['Total'];
+$numPages = ceil($total / $page_number_max);
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -36,7 +43,7 @@ $data = $db->executeResult($sql);
                         <thead>
                             <tr>
                                 <th scope="col">STT</th>
-                                <th scope="col">Image</th>
+                                <th scope="col">Hình ảnh</th>
                                 <th scope="col">Tên sản phẩm</th>
                                 <th scope="col">Giá</th>
                                 <th scope="col">Danh mục</th>
@@ -51,24 +58,59 @@ $data = $db->executeResult($sql);
                             foreach ($data as $item) : ?>
                                 <tr>
                                     <th scope="row"><?= ++$index ?></th>
-                                    <td><img src="<?=fixUrl($item['image'])?>" style="max-height: 100px; margin-top: 5px; margin-bottom: 15px;"></td>
-                                    
+                                    <td><img src="<?= fixUrl($item['image']) ?>" style="max-height: 100px; margin-top: 5px; margin-bottom: 15px;"></td>
+
                                     <td><?= $item['name'] ?></td>
                                     <td><?= number_format($item['price']) ?>VNĐ</td>
-                                    <td><?= $item['category_name']?></td>
-                                    <td > <?= $item['active'] ==0 ? "<span style='color:red'>Không kích hoạt</span>" : "<span style='color:green'>Kích hoạt</span>" ;?> </td>
-                                    
+                                    <td><?= $item['category_name'] ?></td>
+                                    <td> <?= $item['active'] == 0 ? "<span style='color:red'>Không kích hoạt</span>" : "<span style='color:green'>Kích hoạt</span>"; ?> </td>
+
                                     <td>
                                         <a href="./editor.php?id=<?= $item['id'] ?>" class="btn btn-warning">Sửa</a>
-                                        
+
                                         <button onclick="deleteUser(<?= $item['id'] ?>)" class="btn btn-danger">Xoá</button>
-                                        
+
                                     </td>
                                 </tr>
                             <?php endforeach ?>
 
                         </tbody>
                     </table>
+                    <?php $pageAvaiable = [1, 2, $page - 1, $page, $page + 1, $numPages - 1, $numPages];
+                    $isFirst = false;
+                    $isBefore = false;
+                    ?>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <?php if ($page > 1) : ?>
+                                <li class="page-item"><a class="page-link" href="?page=<?= ($page - 1) ?>">Previous</a></li>
+                            <?php endif ?>
+
+                            <?php
+                            for ($i = 1; $i <= $numPages && $numPages > 1; $i++) {
+                                if (!in_array($i, $pageAvaiable)) {
+                                    if ($i < $page && !$isFirst) {
+                                        echo '<li class="page-item"><a class="page-link" href="?page=' . ($page - 2) . '">...</a></li>';
+                                        $isFirst = true;
+                                    }
+                                    if ($i > $page && !$isBefore) {
+                                        echo '<li class="page-item"><a class="page-link" href="?page=' . ($page + 2) . '">...</a></li>';
+                                        $isBefore = true;
+                                    }
+                                    continue;
+                                }
+                                if ($i == $page) {
+                                    echo '<li class="page-item active"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                                } else {
+                                    echo '<li class="page-item"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                                }
+                            }
+                            ?>
+                            <?php if ($page < $numPages) : ?>
+                                <li class="page-item"><a class="page-link" href="?page=<?= ($page + 1) ?>">Next</a></li>
+                            <?php endif ?>
+                        </ul>
+                    </nav>
                 </div>
 
 

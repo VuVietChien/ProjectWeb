@@ -1,10 +1,8 @@
 <?php 
 $baseUrl = '';
 include_once('./layouts/header.php');
-// include_once('./db/database.php');
 $db = new Database();
-$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id ";
-// order by products.updated_at desc limit 0,8
+$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id ORDER BY id desc limit 0,8";
 $lastestItems = $db->executeResult($sql);
 ?>
 <!-- banner -->

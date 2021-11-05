@@ -1,6 +1,7 @@
 <?php
-$title = "Trang Quản Danh mục";
+$title = "Trang Quản lý Danh mục";
 $baseUrl = '../';
+$formNameIndex = "Danh sách danh mục";
 include_once '../layouts/header.php';
 $db = new Database();
 $sql = "SELECT * FROM categories";
@@ -13,7 +14,7 @@ $data = $db->executeResult($sql);
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-md-12">
-                    <h1 class="m-0 mb-3">Danh sách danh mục</h1>
+                    <h1 class="m-0 mb-3"><?=$formNameIndex?></h1>
                     <a href="editor.php" class="btn btn-success">Thêm danh mục</a>
                     <table class="table table-hover mt-5 table-bordered">
                         <thead>

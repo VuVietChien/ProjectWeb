@@ -6,6 +6,7 @@ if (!empty($_POST)) {
     $address = Utility::getPost('address');
     $phone_number = Utility::getPost('phone_number');
     $email = Utility::getPost('email');
+    $avatar = moveFile('avatar');
     $password = Utility::getPost('password');
     $password != '' ? $password = Utility::getSecurityMD5($password) : $password;
     $role_id = Utility::getPost('role_id');
@@ -19,15 +20,15 @@ if (!empty($_POST)) {
         if ($userItem != null) {
             $msgfail = 'Email này đã tồn tại trong tài khoản khác, vui lòng kiểm tra lại';
         } else {
-            if ($password != '') {
+            if ($password != '' || $avatar != '') {
                 // đổi mật khẩu
-                $sql = "UPDATE users set fullname='$fullname',email='$email',phone_number='$phone_number',address='$address',password='$password',role_id=$role_id,updated_at='$updated_at' WHERE id =$id";
+                $sql = "UPDATE users set avatar='$avatar',fullname='$fullname',email='$email',phone_number='$phone_number',address='$address',password='$password',role_id=$role_id,updated_at='$updated_at' WHERE id =$id";
                 $db->execute($sql);
                 $msgsuccess = "Sửa tài khoản thành công";
             } else {
                 // truong hop mat khau la rỗng
                 $sql = "UPDATE users set fullname='$fullname',email='$email',phone_number='$phone_number',address='$address',role_id=$role_id,updated_at='$updated_at' WHERE id =$id";
-          
+
                 $db->execute($sql);
 
                 $msgsuccess = "Sửa tài khoản thành công";
@@ -41,7 +42,7 @@ if (!empty($_POST)) {
             // tai khoan ton tai => faild
             $msgfail = 'Email đã được đăng ký, vui lòng kiểm tra lại';
         } else {
-            $sql = "INSERT INTO users (fullname,email,phone_number,address,password,role_id,created_at,updated_at) VALUES ('$fullname','$email','$phone_number','$address','$password',$role_id,'$created_at','$updated_at')";
+            $sql = "INSERT INTO users (fullname,email,phone_number,address,password,avatar,role_id,created_at,updated_at) VALUES ('$fullname','$email','$phone_number','$address','$password','$avatar',$role_id,'$created_at','$updated_at')";
             $db->execute($sql);
             $msgsuccess = "Đăng ký tài khoản thành công";
             $fullname = $role_id = $phone_number = $address = $password = '';

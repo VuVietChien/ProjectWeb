@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 04, 2021 at 08:23 AM
+-- Generation Time: Nov 05, 2021 at 02:46 AM
 -- Server version: 5.7.33
 -- PHP Version: 8.0.10
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `sportstore`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `brands`
+--
+
+CREATE TABLE `brands` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `mota` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`id`, `name`, `mota`) VALUES
+(1, 'ADIDAS', 'tuyệt123'),
+(2, 'Pimo', '123213213');
 
 -- --------------------------------------------------------
 
@@ -64,7 +84,9 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (3, 'ĐỒ TẬP YOGA'),
 (4, 'THẢM TẬP YOGA'),
 (5, 'ÁO BRA'),
-(6, 'QUẦN LEGGING');
+(6, 'QUẦN LEGGING'),
+(7, 'PHỤ KIỆN'),
+(8, 'SẢN PHẨM BỔ SUNG');
 
 -- --------------------------------------------------------
 
@@ -173,12 +195,42 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `price`, `discount`, `image`, `brand`, `description`, `quantity`, `active`, `created_at`, `updated_at`, `deleted`) VALUES
 (1, 2, 'Áo polo xanh', '560000', 2000, 'assets/photos/317485.png', '', 'ad', 1, 0, '2021-11-12 17:12:16', '2021-11-01 10:37:13', 1),
-(2, 1, 'Áo adidas trắng123', '600000', 1000, 'assets/photos/414496.jpg', '', 'Đường chạy của bạn. Thời gian của bạn. Hãy tận dụng cả hai với chiếc áo thun chạy bộ adidas này. Áo có kiểu dáng hỗ trợ vận động với đường may lộn ngoài và vạt bầu. Chất vải AEROREADY thoát ẩm cho cảm giác mềm mại trên da. Áo còn thân thiện với hành tinh xanh, mang đến cho bạn cảm giác dễ chịu về nhiều mặt. Sản phẩm này may bằng vải công nghệ Primegreen, thuộc dòng chất liệu tái chế hiệu năng cao.', 1, 1, NULL, NULL, 0),
-(3, 1, 'Quần trẻ trung', '10000', 5000, 'assets/photos/84631.jpg', '', 'adsad', 1, 0, NULL, NULL, 0),
-(4, 2, 'Quảng Nam', '10000', 7000, 'assets/photos/106942.jpg', '', '123123123123', 14, 1, NULL, NULL, 0),
-(5, 2, 'Nước hoa Nam', '10000', 4000, 'assets/photos/128706.png', '', 'sd', 14, 1, NULL, NULL, 0),
-(6, 2, 'Nước hoa Nam', '10000', 2, 'assets/photos/718631.png', '', '<p>ads</p>', 14, 0, NULL, NULL, 0),
-(7, 2, 'ken', '10000', 2, 'assets/photos/676679.jpg', '', '<p>adsdffdfffffffdsa</p>', 14, 1, NULL, NULL, 0);
+(2, 2, 'Áo thun thể thao màu đen', '180000', 1000, 'assets/photos/Ao-thun-the-thao-design-mau-den-1-300x300.jpg', '', '<p>Sản phẩm co d&atilde;n 4 chiều gi&uacute;p người d&ugrave;ng thoải m&aacute;i tập luyện v&agrave; c&oacute; độ thấm mồ h&ocirc;i tốt</p>', 1, 1, NULL, NULL, 0),
+(3, 2, 'Áo thun thể thao màu xám', '180000', 5000, 'assets/photos/Ao-poseidon-xam-1-300x300.jpg', '', '<p>Sản phẩm co d&atilde;n 4 chiều gi&uacute;p người d&ugrave;ng thoải m&aacute;i tập luyện v&agrave; c&oacute; độ thấm mồ h&ocirc;i tốt</p>', 1, 1, NULL, NULL, 0),
+(4, 2, 'Bra 360 Lux màu xanh đen', '180000', 7000, 'assets/photos/Bra-lux-xanh-den-30-300x300.jpg', '', '<p>Sản phẩm co d&atilde;n 4 chiều gi&uacute;p người d&ugrave;ng thoải m&aacute;i tập luyện v&agrave; c&oacute; độ thấm mồ h&ocirc;i tốt</p>', 14, 1, NULL, NULL, 0),
+(5, 2, 'Bra 360 màu trắng', '150000', 4000, 'assets/photos/Bra-crossfit-trang-30-300x300.jpg', '', '<p>Sản phẩm co d&atilde;n 4 chiều gi&uacute;p người d&ugrave;ng thoải m&aacute;i tập luyện v&agrave; c&oacute; độ thấm mồ h&ocirc;i tốt</p>', 14, 1, NULL, NULL, 0),
+(6, 2, 'Bra 360 màu cam', '150000', 2, 'assets/photos/Bra-shine-cam-30-300x300.jpg', '', '<p>Sản phẩm co d&atilde;n 4 chiều gi&uacute;p người d&ugrave;ng thoải m&aacute;i tập luyện v&agrave; c&oacute; độ thấm mồ h&ocirc;i tốt</p>', 14, 1, NULL, NULL, 0),
+(7, 2, 'Bra 360 màu xanh', '150000', 2, 'assets/photos/Ao-bra-360s-zipper-mau-xanh-duong-1-300x300.jpg', '', '<p>Sản phẩm co d&atilde;n 4 chiều gi&uacute;p người d&ugrave;ng thoải m&aacute;i tập luyện v&agrave; c&oacute; độ thấm mồ h&ocirc;i tốt</p>', 14, 1, NULL, NULL, 0),
+(8, 2, 'Áo thun thể thao màu đỏ', '180000', 1000, 'assets/photos/Ao-ceres-do-1-300x300.jpg', '', '<p>Sản phẩm co d&atilde;n 4 chiều gi&uacute;p người d&ugrave;ng thoải m&aacute;i tập luyện v&agrave; c&oacute; độ thấm mồ h&ocirc;i tốt</p>', 10, 1, NULL, NULL, 0),
+(9, 2, 'Áo thun thể thao màu running', '200000', 10000, 'assets/photos/Ao-thun-the-thao-running-mau-den-1-300x300.jpg', '', '<p>Sản phẩm co d&atilde;n 4 chiều gi&uacute;p người d&ugrave;ng thoải m&aacute;i tập luyện v&agrave; c&oacute; độ thấm mồ h&ocirc;i tốt&nbsp;</p>', 20, 1, NULL, NULL, 0),
+(10, 1, 'Áo AC Milan sân nhà 2020-2021', '250000', 10000, 'assets/photos/Ao-ac-milan-san-nha-40-300x300.jpg', '', '<p>&Aacute;o b&oacute;ng đ&aacute;</p>', 10, 1, NULL, NULL, 0),
+(11, 1, 'Áo Chelsea sân nhà 2020-2021', '250000', 10000, 'assets/photos/Ao-chelsea-san-nha-40-280x280.jpg', '', '<p>&aacute;o b&oacute;ng đa</p>', 12, 1, NULL, NULL, 0),
+(12, 1, 'Áo Dortmund sân nhà 2020-2021', '250000', 10000, 'assets/photos/Ao-dortmund-san-nha-40-280x280.jpg', '', '<p>&aacute;o b&oacute;ng đa</p>', 12, 1, NULL, NULL, 0),
+(13, 1, 'Áo MU sân nhà 2020-2021', '250000', 10000, 'assets/photos/Ao-mu-san-nha-1-280x280.jpg', '', '<p>&aacute;o b&oacute;ng đa</p>', 12, 1, NULL, NULL, 0),
+(14, 4, 'Thảm tập 360 màu hồng', '250000', 10000, 'assets/photos/tham-360s-venus-2-lop-6mm-hong-5-280x280.jpg', '', '<p>Thảm tập yoga</p>', 20, 1, NULL, NULL, 0),
+(15, 4, 'Thảm tập 360 màu xanh dương', '250000', 10000, 'assets/photos/tham-360s-venus-2-lop-6mm-xanh-duong-5-280x280.jpg', '', '<p>Thảm tập yoga</p>', 20, 1, NULL, NULL, 0),
+(16, 4, 'Thảm tập 360 màu xanh dương lá', '250000', 10000, 'assets/photos/tham-360s-venus-2-lop-6mm-xanh-la-3-280x280.jpg', '', '<p>Thảm tập yoga</p>', 20, 1, NULL, NULL, 0),
+(17, 4, 'Thảm tập 360 màu xanh tím cao cấp Hummels', '1500000', 100000, 'assets/photos/tham-hummal-cao-su-tim-2-300x300.jpg', '', '<p>Thảm tập yoga</p>', 20, 1, NULL, NULL, 0),
+(18, 3, 'Bra insi xám', '180000', 10000, 'assets/photos/Bras-indy-xam-2-300x300.jpg', '', '<p>Co d&atilde;n 4 chiều</p>', 20, 1, NULL, NULL, 0),
+(19, 3, 'Bra zip màu xanh ngọc', '220000', 10000, 'assets/photos/Ao-bra-360s-zipper-mau-xanh-la-1-300x300.jpg', '', '<p>Co d&atilde;n 4 chiều</p>', 20, 1, NULL, NULL, 0),
+(20, 3, 'Quần legging nữ màu xanh đen', '250000', 10000, 'assets/photos/Quan-legging-lung-grid-xanh-den-1-300x300.jpg', '', '<p>Co d&atilde;n 4 chiều</p>', 20, 1, NULL, NULL, 0),
+(21, 3, 'Quần legging nữ màu grid đen', '250000', 10000, 'assets/photos/Quan-legging-lung-grid-den-1-300x300.jpg', '', '<p>Co d&atilde;n 4 chiều</p>', 20, 1, NULL, NULL, 0),
+(22, 6, 'Quần legging lửng màu hồng', '250000', 10000, 'assets/photos/Quan-legging-lung-power-hong-1-300x300.jpg', '', '<p>co d&atilde;n 4 chiều</p>', 10, 1, NULL, NULL, 0),
+(23, 6, 'Quần legging lửng màu xám', '250000', 10000, 'assets/photos/Quan-legging-lung-power-xam-1-300x300.jpg', '', '<p>co d&atilde;n 4 chiều</p>', 10, 1, NULL, NULL, 0),
+(24, 6, 'Quần legging màu xám line trắng', '280000', 10000, 'assets/photos/Quan-legging-lung-shaping-xam-2-300x300.jpg', '', '<p>co d&atilde;n 4 chiều</p>', 10, 1, NULL, NULL, 0),
+(25, 6, 'Quần legging nữ màu đen', '280000', 10000, 'assets/photos/quan-legging-det-den-1-300x300.jpg', '', '<p>co d&atilde;n 4 chiều</p>', 10, 1, NULL, NULL, 0),
+(26, 5, 'Áo bra agles tím hồng', '180000', 5000, 'assets/photos/Ao-bras-agless-mau-tim-1-300x300.jpg', '', '<p>co d&atilde;n 4 chiều</p>', 10, 1, NULL, NULL, 0),
+(27, 5, 'Áo bra drysoft màu tím', '180000', 5000, 'assets/photos/Ao-bras-drysoft-mau-tim-2-300x300.jpg', '', '<p>co d&atilde;n 4 chiều</p>', 10, 1, NULL, NULL, 0),
+(28, 5, 'Áo bra buffter màu đen', '180000', 5000, 'assets/photos/Bra-bufterfly-mau-den-2-300x300.jpg', '', '<p>co d&atilde;n 4 chiều</p>', 10, 1, NULL, NULL, 0),
+(29, 5, 'Áo bra striped màu tím', '180000', 5000, 'assets/photos/Bra-strappy-mau-tim-1-300x300.jpg', '', '<p>co d&atilde;n 4 chiều</p>', 10, 1, NULL, NULL, 0),
+(30, 7, 'Dàn tạ đa năng BKVI', '10000000', 500000, 'assets/photos/BK-899Pro overall-500x500.jpg', '', '<p>dụng cụ hỗ trợ</p>', 10, 1, NULL, NULL, 0),
+(31, 7, 'Máy chạy bộ Kingtons', '12000000', 500000, 'assets/photos/kungfu-da-nang-500x500.png', '', '<p>dụng cụ hỗ trợ</p>', 10, 1, NULL, NULL, 0),
+(32, 7, 'Ghế massage G46 Newblance', '32000000', 1000000, 'assets/photos/G46 new-anh avata moi-900x900r-500x500.jpg', '', '<p>dụng cụ hỗ trợ</p>', 10, 1, NULL, NULL, 0),
+(33, 7, 'Máy đo huyết áp Misukina', '250000', 10000, 'assets/photos/1_12-500x500.jpg', '', '<p>dụng cụ hỗ trợ</p>', 10, 1, NULL, NULL, 0),
+(34, 8, 'Whey goldstandard 4.5', '2500000', 100000, 'assets/photos/upl_whey_gold_standard_10lbs_4_5kg_1618384676_image_1618384676.jpg', '', '<p>sản phẩm bổ sung</p>', 10, 1, NULL, NULL, 0),
+(35, 8, 'Omega 3 newblance', '1000000', 100000, 'assets/photos/129_image_catalog_now_omega-3_200_vien_image_catalog_1587722784.jpg', '', '<p>sản phẩm bổ sung</p>', 10, 1, NULL, NULL, 0),
+(36, 8, 'NitroTech Whey Mutant 4.5 kg', '2800000', 100000, 'assets/photos/upl_mutant_iso_surge_5lbs_2_27kg_1620788574_image_1620788574.jpg', '', '<p>sản phẩm bổ sung</p>', 10, 1, NULL, NULL, 0),
+(37, 8, 'Combo 5 bánh bổ sung protein', '200000', 100000, 'assets/photos/upl_biotech_zero_bar_1593678290_image_1593678290.png', '', '<p>sản phẩm bổ sung</p>', 100, 1, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -256,7 +308,8 @@ INSERT INTO `tokens` (`user_id`, `token`, `created_at`) VALUES
 (1, 'ee4738999d0e3ea199fb871bc96340c1', '2021-10-28 14:08:47'),
 (1, 'fb78230c3c129a0c5e22099339a4abd5', '2021-10-29 09:05:21'),
 (12, '181078a30af3f528869514b78f40bb2b', '2021-10-30 14:24:41'),
-(13, 'af08e39cb4fb5f11417b6bc89eef6114', '2021-10-30 14:25:14');
+(13, 'af08e39cb4fb5f11417b6bc89eef6114', '2021-10-30 14:25:14'),
+(15, '48e7e95f60f703f0e91e30c001b42f42', '2021-11-05 01:19:47');
 
 -- --------------------------------------------------------
 
@@ -295,11 +348,18 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `phone_number`, `address`, `pass
 (11, 'asashin', 'ken@gmail.com', NULL, NULL, 'e6a109a81bb3c1c4a7f63fbfe4f1c48f', 2, '2021-10-30 14:18:21', '2021-11-04 03:51:41', 1),
 (12, 'nam', 'zxc@gmail.com', NULL, NULL, '0e6f6f594b8c3fb93335c4522b761b29', 2, '2021-10-30 14:19:40', '2021-11-04 03:51:40', 1),
 (13, 'neymả', 'tanh@gmail.com', NULL, NULL, '0e6f6f594b8c3fb93335c4522b761b29', 2, '2021-10-30 14:25:07', '2021-11-04 03:51:39', 1),
-(14, 'Thuận Nguyễn', 'thuanbin1108@gmail.com', '06545446', 'Hà Nội', '0e6f6f594b8c3fb93335c4522b761b29', 2, '2021-11-04 03:53:50', '2021-11-04 03:54:06', 0);
+(14, 'Thuận Nguyễn', 'thuanbin1108@gmail.com', '06545446', 'Hà Nội', '0e6f6f594b8c3fb93335c4522b761b29', 2, '2021-11-04 03:53:50', '2021-11-04 03:54:06', 0),
+(15, 'Tam', 'doantam01@gmail', NULL, NULL, '0e6f6f594b8c3fb93335c4522b761b29', 2, '2021-11-05 01:19:38', '2021-11-05 01:19:38', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `carts`
@@ -377,6 +437,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
@@ -386,7 +452,7 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -416,7 +482,7 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -434,7 +500,7 @@ ALTER TABLE `sliders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

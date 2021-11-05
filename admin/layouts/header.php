@@ -224,7 +224,7 @@ if ($user == null) {
                         </li>
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
-                                <i class="fas fa-comments"></i>
+                                <i class="nav-icon fas fa-comments"></i>
                                 <p>
                                       Quản lý phản hồi
                                     <i class="right fas fa-angle-left"></i>

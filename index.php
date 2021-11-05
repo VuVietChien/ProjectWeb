@@ -61,6 +61,7 @@ foreach($menuItems as $item) {
 	// ." order by products.updated_at desc limit 0,4"
 	$items = $db->executeResult($sql);
 	if($items == null || count($items) < 4) continue;
+
 ?>
 <div style="background-color: <?=($count++%2 == 0)?'#f7f9fa':''?>;">
 <div class="container">

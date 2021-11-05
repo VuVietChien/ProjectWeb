@@ -89,6 +89,8 @@ $menuItems = $db->executeResult($sql);
 			position: fixed;
 			right: 40px;
 		}
+
+		
 	</style>
 </head>
 

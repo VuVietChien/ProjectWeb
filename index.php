@@ -2,7 +2,7 @@
 $baseUrl = '';
 include_once('./layouts/header.php');
 $db = new Database();
-$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id ORDER BY id desc limit 0,8";
+$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id WHERE deleted=0 ORDER BY id desc limit 0,8";
 $lastestItems = $db->executeResult($sql);
 ?>
 <!-- banner -->
@@ -57,7 +57,7 @@ $lastestItems = $db->executeResult($sql);
 <?php
 $count = 0;
 foreach($menuItems as $item) {
-	$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.category_id = ".$item['id'];
+	$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.category_id = ".$item['id'] . " AND deleted=0";
 	// ." order by products.updated_at desc limit 0,4"
 	$items = $db->executeResult($sql);
 	if($items == null || count($items) < 4) continue;

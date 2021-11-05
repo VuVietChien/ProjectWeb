@@ -57,10 +57,13 @@ $lastestItems = $db->executeResult($sql);
 <?php
 $count = 0;
 foreach($menuItems as $item) {
-	$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.category_id = ".$item['id'];
+	$sql = "select products.*, categories.name as category_name from products 
+	left join categories on products.category_id = categories.id where products.
+	category_id = ".$item['id']. " AND deleted = 0";
 	// ." order by products.updated_at desc limit 0,4"
 	$items = $db->executeResult($sql);
 	if($items == null || count($items) < 4) continue;
+
 ?>
 <div style="background-color: <?=($count++%2 == 0)?'#f7f9fa':''?>;">
 <div class="container">

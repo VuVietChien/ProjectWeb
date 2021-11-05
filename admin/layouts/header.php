@@ -239,6 +239,30 @@ if ($user == null) {
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Quản lý thương hiệu
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= $baseUrl ?>./brands/editor.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm thương hiệu</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= $baseUrl ?>./brands/index.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách thương hiệu</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

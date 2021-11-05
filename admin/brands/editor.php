@@ -1,16 +1,17 @@
 <?php
-	$title = 'Thêm/Sửa Tài Khoản Người Dùng';
+	$title = 'Thêm/Sửa Thương Hiệu';
 	$baseUrl = '../';
 	include_once '../layouts/header.php';
-    $id = $msgfail=$msgsuccess= $name='';
+    $id = $msgfail=$msgsuccess= $name= $mota='';
     include_once './form_save.php';
 	$db = new Database();
 	$id = Utility::getGet('id');
 	if ($id != '' && $id > 0) {
-		$sql = "SELECT * FROM roles WHERE id=$id";
+		$sql = "SELECT * FROM brands WHERE id=$id";
 		$userItem = $db->executeResult($sql,true);
 		if ($userItem != null) {
 			$name = $userItem['name'];
+            $mota = $userItem['mota'];
 		} else {
 			$id = 0;
 		}
@@ -24,7 +25,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-md-12">
-                    <h1 class="m-0 mb-3">Thêm/Sửa Quyền</h1>
+                    <h1 class="m-0 mb-3">Thêm/Sửa Thương Hiệu</h1>
 					<?php if ((isset($msgfail)) && !empty($msgfail)) : ?>
                         <div class="alert alert-danger alert-dismissible fade show toast" role="alert" style="max-width: 100%;">
                             <strong><?= $msgfail ?></strong>
@@ -46,7 +47,13 @@
 					  <input type="hidden" name="id" value="<?= $id ?>">
 					  <label for="usr">NAME:</label>
 					  <input name="name" type="text" class="form-control" placeholder="Nhập tên quyền" value="<?= $name ?>">
-					<button class="btn btn-success"  style="margin-top: 25px;">Lưu</button>
+                      </div>
+
+                      <div class="form-group">
+                            <label for="exampleInputEmail1">MÔ TẢ</label>
+                            <input value="<?= $mota ?>" name="mota" type="mota" class="form-control" placeholder="Nhập mô tả">
+                      </div>
+					    <button class="btn btn-success"  style="margin-top: 25px;">Lưu</button>
 				</form>
 			</div>
         </div>

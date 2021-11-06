@@ -14,9 +14,9 @@ $menuItems = $db->executeResult($sql);
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trang Chủ - Shop Thời Trang</title>
+	<title>Trang Chủ - Shop Thể Thao</title>
 	<link rel="shortcut icon" href="https://t004.gokisoft.com/uploads/2021/07/1-s-1637-ico-web.jpg">
-
+	<link href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css" rel="stylesheet">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -39,8 +39,14 @@ $menuItems = $db->executeResult($sql);
 		}
 
 		.nav li a {
-			color: #28a745;
+
+			color: rgba(102, 102, 102, 0.85);
 			font-weight: bold;
+		}
+
+		.nav li a:hover {
+			color: #3D2E5C;
+			transition: 0.5s;
 		}
 
 		.carousel-inner img {
@@ -67,7 +73,7 @@ $menuItems = $db->executeResult($sql);
 
 		.cart_icon {
 			position: fixed;
-			z-index: 999999;
+			z-index: 999;
 			right: 0px;
 			top: 45%;
 		}
@@ -90,19 +96,58 @@ $menuItems = $db->executeResult($sql);
 			right: 40px;
 		}
 
-		
+		.preloader {
+			background-color: #fff;
+			bottom: 0;
+			height: 100%;
+			left: 0;
+			position: fixed;
+			right: 0;
+			display: block;
+			top: 0;
+			width: 100%;
+			z-index: 9999;
+		}
+
+		.preloader img {
+			display: block;
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			-moz-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			-o-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+
+		#back-to-top {
+			background-color: #171717;
+			bottom: 20px;
+			color: #fff;
+			display: none;
+			font-size: 24px;
+			height: 40px;
+			line-height: 40px;
+			position: fixed;
+			right: 20px;
+			text-align: center;
+			width: 40px;
+			z-index: 99;
+		}
 	</style>
 </head>
 
 <body>
 	<!-- Menu START -->
+
 	<div class="container">
-		<ul class="nav" style="width: 102%;">
+		<ul class="nav" style="width: 100%;align-items:center;justify-content:center;padding:20px 0;">
 			<li class="nav-item" style="margin-top: 0px !important;">
-				<a href="index.php"><img src="https://t004.gokisoft.com/uploads/2021/07/1-s-1636-logo-web.jpg" style="height: 80px;"></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="index.php">Trang Chủ</a>
+				<!-- <a href="index.php"><img src="https://t004.gokisoft.com/uploads/2021/07/1-s-1636-logo-web.jpg" style="height: 80px;"></a> -->
+				<a href="index.php"><img src="./logo1.png" style="height: 60px;"></a>
 			</li>
 			<?php
 			foreach ($menuItems as $item) {
@@ -111,10 +156,6 @@ $menuItems = $db->executeResult($sql);
 				  </li>';
 			}
 			?>
-
-			<li class="nav-item">
-				<a class="nav-link" href="contact.php">Liên Hệ</a>
-			</li>
 		</ul>
 	</div>
 	<!-- Menu Stop -->

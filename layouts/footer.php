@@ -35,17 +35,25 @@
 		© 2018 Zic Zac Group . Được thiết kế bời ZicZac. All rights reserved.
 	</div>
 </footer>
+<!-- back to top -->
+<div class="back-to-top" id="back-to-top" style="display: block;">
+	<a href="#">
+		<i class="fas fa-arrow-up"></i>
+	</a>
+</div>
+
 
 <?php
-if(!isset($_SESSION['cart'])) {
+if (!isset($_SESSION['cart'])) {
 	$_SESSION['cart'] = [];
 }
 $count = 0;
 // var_dump($_SESSION['cart']);
-foreach($_SESSION['cart'] as $item) {
+foreach ($_SESSION['cart'] as $item) {
 	$count += $item['num'];
 }
 ?>
+
 <script type="text/javascript">
 	function addCart(productId, num) {
 		$.post('api/ajax_request.php', {
@@ -59,9 +67,25 @@ foreach($_SESSION['cart'] as $item) {
 </script>
 <!-- Cart start -->
 <span class="cart_icon">
-	<span class="cart_count"><?=$count?></span>
+	<span class="cart_count"><?= $count ?></span>
 	<a href="cart.php"><img src="https://gokisoft.com/img/cart.png"></a>
 </span>
 <!-- Cart stop -->
+<!-- Jquery-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Owl Carousel-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<!-- Slick JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<!-- jquery.elevateZoom-3.0.8.min.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js"></script>
+<!-- Ionicons JS-->
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+<!-- Wow Js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script src="./main.js"></script>
 </body>
+
 </html>

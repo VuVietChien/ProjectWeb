@@ -46,7 +46,7 @@
 					  <input type="hidden" name="id" value="<?= $id ?>">
 					  <label for="usr">NAME:</label>
 					  <input name="name" type="text" class="form-control" placeholder="Nhập tên quyền" value="<?= $name ?>">
-					<button class="btn btn-success"  style="margin-top: 25px;">Save</button>
+					<button class="btn btn-success"  style="margin-top: 25px;">Lưu</button>
 				</form>
 			</div>
         </div>

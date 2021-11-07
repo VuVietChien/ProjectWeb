@@ -2,7 +2,7 @@
 $title = "Trang Quản lý người dùng";
 $baseUrl = '../';
 include_once '../layouts/header.php';
-$id = $msgfail = $msgsuccess = $fullname = $email = $phone_number = $address = $role_id =  '';
+$id = $avatar = $msgfail = $msgsuccess = $fullname = $email = $phone_number = $address = $role_id =  '';
 include_once './form_save.php';
 $id = Utility::getGet('id');
 if ($id != '' && $id > 0) {
@@ -45,7 +45,7 @@ $roleItems = $db->executeResult($sql);
                             </button>
                         </div>
                     <?php endif; ?>
-                    <form method="POST" action="" onsubmit="return validateForm()">
+                    <form method="POST" action="" onsubmit="return validateForm()" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="hidden" name="id" value="<?= $id ?>">
                             <label for="exampleInputEmail1">Họ và tên</label>
@@ -76,6 +76,11 @@ $roleItems = $db->executeResult($sql);
                             <input value="<?= $address ?>" name="address" type="tel" class="form-control" placeholder="Nhập sdt">
                         </div>
                         <div class="form-group">
+                            <label for="avatar">Avatar:</label>
+                            <input value="<?= $avatar ?>" type="file" class="form-control" id="avatar" name="avatar" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" onchange="updateAvatar()">
+                            <img id="avatar_img" src="<?= fixUrl($avatar) ?>" style="max-height: 160px; margin-top: 5px; margin-bottom: 15px;">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Nhập mật khẩu</label>
                             <input <?= $id > 0 ? '' : 'required="true"' ?> type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu" minlength="1" />
                         </div>
@@ -99,6 +104,10 @@ $roleItems = $db->executeResult($sql);
 </aside>
 </div>
 <script>
+    function updateAvatar() {
+        $('#avatar_img').attr('src', $('#avatar').val());
+    }
+
     function validateForm() {
         $password = $('#password').val();
         $confirm_password = $('#confirm_password').val();

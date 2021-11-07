@@ -31,8 +31,8 @@ $data = $db->executeResult($sql);
                                     <th scope="row"><?= ++$index ?></th>
                                     <td><?= $item['name'] ?></td>
                                     <td>
-                                        <a href="./editor.php?id=<?= $item['id'] ?>" class="btn btn-warning">Sửa</a>
-                                        <button onclick="deleteUser(<?= $item['id'] ?>)" class="btn btn-danger">Xoá</button>
+                                        <a href="./editor.php?id=<?= $item['id'] ?>" class="btn btn-warning"><i class="far fa-edit"></i></a>
+                                        <button onclick="deleteUser(<?= $item['id'] ?>)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

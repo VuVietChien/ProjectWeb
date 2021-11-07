@@ -5,16 +5,13 @@ include_once('./layouts/header.php');
 $productId = Utility::getGet('id');
 $db = new Database();
 $sql = "select Products.*, Categories.name as category_name from Products left join Categories on Products.category_id = Categories.id where Products.id = $productId";
-$product = $db->executeResult($sql);
+$product = $db->executeResult($sql,true);
 
-
-$category_id = (int)$product['category_id'];
-
+$category_id = $product['category_id'];
 
 $sql1 = "select Products.*, Categories.name as category_name from Products left join Categories on Products.category_id = Categories.id where Products.category_id = $category_id order by Products.updated_at desc limit 0,4";
 
-$db1 = new Database();
-$lastestItems = $db1->executeResult($sql1);
+$lastestItems = $db->executeResult($sql1);
 
 ?>
 <style type="text/css">
@@ -29,15 +26,15 @@ $lastestItems = $db1->executeResult($sql1);
 <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
 	<div class="row">
 		<div class="col-md-6">
-			<img src="<?=$product['thumbnail']?>" style="width: 100%;">
+			<img src="<?=$product['image']?>" style="width: 100%;">
 		</div>
 		<div class="col-md-6">
 			<ul class="breadcrumb">
 				<li><a href="index.php">Trang Chủ</a></li>
 				<li><a href="category.php?id=<?=$product['category_id']?>"> / <?=$product['category_name']?></a></li>
-				<li> / <?=$product['title']?></li>
+				<li> / <?=$product['name']?></li>
 			</ul>
-			<h2><?=$product['title']?></h2>
+			<h2><?=$product['name']?></h2>
 			<ul style="display: flex; list-style-type: none; margin: 0px; padding: 0px;">
 				<li style="color: orange; font-size: 13pt; padding-top: 2px; margin-right: 5px;">5.0</li>
 				<li style="color: orange; padding: 2px;">
@@ -97,9 +94,9 @@ $lastestItems = $db1->executeResult($sql1);
 	<?php
 		foreach($lastestItems as $item) {
 			echo '<div class="col-md-3 col-6 product-item">
-					<a href="detail.php?id='.$item['id'].'"><img src="'.$item['thumbnail'].'" style="width: 100%; height: 220px;"></a>
+					<a href="detail.php?id='.$item['id'].'"><img src="'.$item['image'].'" style="width: 100%; height: 220px;"></a>
 					<p style="font-weight: bold;">'.$item['category_name'].'</p>
-					<a href="detail.php?id='.$item['id'].'"><p style="font-weight: bold;">'.$item['title'].'</p></a>
+					<a href="detail.php?id='.$item['id'].'"><p style="font-weight: bold;">'.$item['name'].'</p></a>
 					<p style="color: red; font-weight: bold;">'.number_format($item['discount']).' VND</p>
 					<p><button class="btn btn-success" onclick="addCart('.$item['id'].', 1)" style="width: 100%; border-radius: 0px;"><i class="bi bi-cart-plus-fill"></i> Thêm giỏ hàng</button></p>
 				</div>';

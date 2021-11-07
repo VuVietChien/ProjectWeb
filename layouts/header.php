@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once($baseUrl . './utils/utility.php');
-include_once($baseUrl . './db/database.php');
+include_once('./utils/utility.php');
+include_once('./db/database.php');
 
 $db = new Database();
 $sql = "select * from categories";

@@ -1,14 +1,21 @@
 <?php 
-require_once('layouts/header.php');
+$baseUrl = '';
+include_once('./layouts/header.php');
 
-$productId = getGet('id');
-$sql = "select Product.*, Category.name as category_name from Product left join Category on Product.category_id = Category.id where Product.id = $productId";
-$product = executeResult($sql, true);
+$productId = Utility::getGet('id');
+$db = new Database();
+$sql = "select Products.*, Categories.name as category_name from Products left join Categories on Products.category_id = Categories.id where Products.id = $productId";
+$product = $db->executeResult($sql);
 
-$category_id = $product['category_id'];
-$sql = "select Product.*, Category.name as category_name from Product left join Category on Product.category_id = Category.id where Product.category_id = $category_id order by Product.updated_at desc limit 0,4";
 
-$lastestItems = executeResult($sql);
+$category_id = (int)$product['category_id'];
+
+
+$sql1 = "select Products.*, Categories.name as category_name from Products left join Categories on Products.category_id = Categories.id where Products.category_id = $category_id order by Products.updated_at desc limit 0,4";
+
+$db1 = new Database();
+$lastestItems = $db1->executeResult($sql1);
+
 ?>
 <style type="text/css">
 	.breadcrumb {

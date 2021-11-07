@@ -4,47 +4,10 @@ include_once('./layouts/header.php');
 $db = new Database();
 $sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id WHERE deleted=0 ORDER BY id desc limit 0,8";
 $lastestItems = $db->executeResult($sql);
-
-
-$sql1 = "select * from sliders";
-$sliders = $db->executeResult($sql1);
 ?>
 <div class="preloader loaded" id="preloader"><img src="./preload.gif" alt=""></div>
 <!-- banner -->
-
-<div id="demo" class="carousel slide" data-ride="carousel">
-	<!-- Indicators -->
-	<ul class="carousel-indicators">
-		<li data-target="#demo" data-slide-to="0" class="active"></li>
-		<li data-target="#demo" data-slide-to="1"></li>
-		<li data-target="#demo" data-slide-to="2"></li>
-	</ul>
-
-	<!-- The slideshow -->
-	<div class="carousel-inner">
-		<?php foreach ($sliders as $slider) : ?>
-			<?php if ($slider['id'] == 2) : ?>
-				<div class="carousel-item active">
-					<img src="<?= $slider['image'] ?>">
-				</div>
-			<?php else : ?>
-				<div class="carousel-item ">
-					<img src="<?= $slider['image'] ?>">
-				</div>
-			<?php endif ?>
-		<?php endforeach; ?>
-	</div>
-
-
-	<!-- Left and right controls -->
-	<a class="carousel-control-prev" href="#demo" data-slide="prev">
-		<span class="carousel-control-prev-icon"></span>
-	</a>
-	<a class="carousel-control-next" href="#demo" data-slide="next">
-		<span class="carousel-control-next-icon"></span>
-	</a>
-
-</div>
+<?php require_once('./slider.php') ?>
 <!-- banner stop -->
 <div class="container">
 	<h1 style="text-align: center; margin-top: 20px; margin-bottom: 20px;">SẢN PHẨM MỚI NHẤT</h1>

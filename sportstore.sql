@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 05, 2021 at 02:46 AM
--- Server version: 5.7.33
--- PHP Version: 8.0.10
+-- Máy chủ: 127.0.0.1:3306
+-- Thời gian đã tạo: Th10 07, 2021 lúc 01:43 PM
+-- Phiên bản máy phục vụ: 5.7.31
+-- Phiên bản PHP: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,23 +18,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sportstore`
+-- Cơ sở dữ liệu: `sportstore`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brands`
+-- Cấu trúc bảng cho bảng `brands`
 --
 
-CREATE TABLE `brands` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `brands`;
+CREATE TABLE IF NOT EXISTS `brands` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `mota` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `mota` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `brands`
+-- Đang đổ dữ liệu cho bảng `brands`
 --
 
 INSERT INTO `brands` (`id`, `name`, `mota`) VALUES
@@ -44,20 +46,22 @@ INSERT INTO `brands` (`id`, `name`, `mota`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carts`
+-- Cấu trúc bảng cho bảng `carts`
 --
 
-CREATE TABLE `carts` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `carts`;
+CREATE TABLE IF NOT EXISTS `carts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(100) NOT NULL,
   `product_id` int(11) NOT NULL,
   `product_price` varchar(50) NOT NULL,
   `product_image` varchar(255) NOT NULL,
-  `product_quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `product_quantity` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `carts`
+-- Đang đổ dữ liệu cho bảng `carts`
 --
 
 INSERT INTO `carts` (`id`, `product_name`, `product_id`, `product_price`, `product_image`, `product_quantity`) VALUES
@@ -66,16 +70,18 @@ INSERT INTO `carts` (`id`, `product_name`, `product_id`, `product_price`, `produ
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Cấu trúc bảng cho bảng `categories`
 --
 
-CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `categories`
+-- Đang đổ dữ liệu cho bảng `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
@@ -91,39 +97,47 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedback`
+-- Cấu trúc bảng cho bảng `feedback`
 --
 
-CREATE TABLE `feedback` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `feedback`;
+CREATE TABLE IF NOT EXISTS `feedback` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone_number` varchar(50) NOT NULL,
   `subject_name` varchar(50) NOT NULL,
-  `note` varchar(100) NOT NULL
+  `note` varchar(100) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gallery`
+-- Cấu trúc bảng cho bảng `gallery`
 --
 
-CREATE TABLE `gallery` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `gallery`;
+CREATE TABLE IF NOT EXISTS `gallery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_id` int(11) NOT NULL,
-  `thumbnail` varchar(255) NOT NULL
+  `thumbnail` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
-CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -132,11 +146,13 @@ CREATE TABLE `orders` (
   `note` varchar(100) NOT NULL,
   `order_date` datetime NOT NULL,
   `status` int(11) NOT NULL,
-  `total_money` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `total_money` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_order_user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders`
+-- Đang đổ dữ liệu cho bảng `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `fullname`, `email`, `phone_number`, `address`, `note`, `order_date`, `status`, `total_money`) VALUES
@@ -146,20 +162,24 @@ INSERT INTO `orders` (`id`, `user_id`, `fullname`, `email`, `phone_number`, `add
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_details`
+-- Cấu trúc bảng cho bảng `order_details`
 --
 
-CREATE TABLE `order_details` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `order_details`;
+CREATE TABLE IF NOT EXISTS `order_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `num` int(11) NOT NULL,
-  `total_money` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `total_money` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_orderdetail_order` (`order_id`),
+  KEY `fk_orderdetail_product` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order_details`
+-- Đang đổ dữ liệu cho bảng `order_details`
 --
 
 INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `price`, `num`, `total_money`) VALUES
@@ -170,11 +190,12 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `price`, `num`, `to
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
-CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `price` varchar(100) NOT NULL,
@@ -186,11 +207,13 @@ CREATE TABLE `products` (
   `active` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `deleted` int(11) NOT NULL DEFAULT '0' COMMENT 'Xoá mềm ( mặc định là 0)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `deleted` int(11) NOT NULL DEFAULT '0' COMMENT 'Xoá mềm ( mặc định là 0)',
+  PRIMARY KEY (`id`),
+  KEY `fk_product_category` (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `price`, `discount`, `image`, `brand`, `description`, `quantity`, `active`, `created_at`, `updated_at`, `deleted`) VALUES
@@ -235,16 +258,18 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `price`, `discount`, `image
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Cấu trúc bảng cho bảng `roles`
 --
 
-CREATE TABLE `roles` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `roles`
+-- Đang đổ dữ liệu cho bảng `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`) VALUES
@@ -254,19 +279,21 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sliders`
+-- Cấu trúc bảng cho bảng `sliders`
 --
 
-CREATE TABLE `sliders` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `sliders`;
+CREATE TABLE IF NOT EXISTS `sliders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `image` varchar(100) NOT NULL,
   `title` varchar(70) NOT NULL,
   `content` varchar(100) NOT NULL,
-  `active` int(11) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `active` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `sliders`
+-- Đang đổ dữ liệu cho bảng `sliders`
 --
 
 INSERT INTO `sliders` (`id`, `image`, `title`, `content`, `active`) VALUES
@@ -275,17 +302,19 @@ INSERT INTO `sliders` (`id`, `image`, `title`, `content`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tokens`
+-- Cấu trúc bảng cho bảng `tokens`
 --
 
-CREATE TABLE `tokens` (
+DROP TABLE IF EXISTS `tokens`;
+CREATE TABLE IF NOT EXISTS `tokens` (
   `user_id` int(11) NOT NULL,
   `token` varchar(32) NOT NULL,
-  `created_at` datetime DEFAULT NULL
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`user_id`,`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tokens`
+-- Đang đổ dữ liệu cho bảng `tokens`
 --
 
 INSERT INTO `tokens` (`user_id`, `token`, `created_at`) VALUES
@@ -309,16 +338,18 @@ INSERT INTO `tokens` (`user_id`, `token`, `created_at`) VALUES
 (1, 'fb78230c3c129a0c5e22099339a4abd5', '2021-10-29 09:05:21'),
 (12, '181078a30af3f528869514b78f40bb2b', '2021-10-30 14:24:41'),
 (13, 'af08e39cb4fb5f11417b6bc89eef6114', '2021-10-30 14:25:14'),
-(15, '48e7e95f60f703f0e91e30c001b42f42', '2021-11-05 01:19:47');
+(15, '48e7e95f60f703f0e91e30c001b42f42', '2021-11-05 01:19:47'),
+(16, '5d3c283c7c7fa562ed0b2407f2260e88', '2021-11-05 17:09:42');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `fullname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone_number` varchar(50) DEFAULT NULL,
@@ -327,11 +358,13 @@ CREATE TABLE `users` (
   `role_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `deleted` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `deleted` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `fk_user_role` (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `phone_number`, `address`, `password`, `role_id`, `created_at`, `updated_at`, `deleted`) VALUES
@@ -349,184 +382,34 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `phone_number`, `address`, `pass
 (12, 'nam', 'zxc@gmail.com', NULL, NULL, '0e6f6f594b8c3fb93335c4522b761b29', 2, '2021-10-30 14:19:40', '2021-11-04 03:51:40', 1),
 (13, 'neymả', 'tanh@gmail.com', NULL, NULL, '0e6f6f594b8c3fb93335c4522b761b29', 2, '2021-10-30 14:25:07', '2021-11-04 03:51:39', 1),
 (14, 'Thuận Nguyễn', 'thuanbin1108@gmail.com', '06545446', 'Hà Nội', '0e6f6f594b8c3fb93335c4522b761b29', 2, '2021-11-04 03:53:50', '2021-11-04 03:54:06', 0),
-(15, 'Tam', 'doantam01@gmail', NULL, NULL, '0e6f6f594b8c3fb93335c4522b761b29', 2, '2021-11-05 01:19:38', '2021-11-05 01:19:38', 0);
+(15, 'Tam', 'doantam01@gmail', NULL, NULL, '0e6f6f594b8c3fb93335c4522b761b29', 2, '2021-11-05 01:19:38', '2021-11-05 01:19:38', 0),
+(16, 'Vũ Viết Chiến', 'vuvietchien07042001@gmail.com', NULL, NULL, '8fa466b953e9025766a08181391b2120', 2, '2021-11-05 17:09:33', '2021-11-05 17:09:33', 0);
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `brands`
---
-ALTER TABLE `brands`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `carts`
---
-ALTER TABLE `carts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `gallery`
---
-ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_order_user` (`user_id`);
-
---
--- Indexes for table `order_details`
---
-ALTER TABLE `order_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_orderdetail_order` (`order_id`),
-  ADD KEY `fk_orderdetail_product` (`product_id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_product_category` (`category_id`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sliders`
---
-ALTER TABLE `sliders`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tokens`
---
-ALTER TABLE `tokens`
-  ADD PRIMARY KEY (`user_id`,`token`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_role` (`role_id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `brands`
---
-ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `carts`
---
-ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `feedback`
---
-ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `gallery`
---
-ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `order_details`
---
-ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `sliders`
---
-ALTER TABLE `sliders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `orders`
+-- Các ràng buộc cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `fk_order_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `order_details`
+-- Các ràng buộc cho bảng `order_details`
 --
 ALTER TABLE `order_details`
   ADD CONSTRAINT `fk_orderdetail_order` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `fk_orderdetail_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Constraints for table `products`
+-- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `fk_product_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
 
 --
--- Constraints for table `users`
+-- Các ràng buộc cho bảng `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_user_role` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);

@@ -14,15 +14,15 @@ if(!empty($_POST)) {
 
 	switch ($action) {
 		case 'delete':
-			deleteProduct();
+			deleteSliders();
 			break;
 	}
 }
 
-function deleteProduct() {
+function deleteSliders() {
 	$db = new Database();
 	$id = Utility::getPost('id');
-	$updated_at = date("Y-m-d H:i:s");
-    $sql = "UPDATE products set deleted = 1,updated_at='$updated_at' WHERE id =$id";
+	//$updated_at = date("Y-m-d H:i:s");
+    $sql = "DELETE from sliders WHERE id =$id";
 	$db->execute($sql);
 }

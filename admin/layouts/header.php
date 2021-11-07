@@ -201,6 +201,8 @@ if ($user == null) {
                                 </li>
                             </ul>
                         </li>
+
+
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-user-tag"></i>
@@ -224,6 +226,8 @@ if ($user == null) {
                                 </li>
                             </ul>
                         </li>
+
+
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-comments"></i>
@@ -242,16 +246,36 @@ if ($user == null) {
                             </ul>
                         </li>
 
+<<<<<<< HEAD
+
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-user-tag"></i>
+                                <p>
+                                    Quản lý slider
+=======
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản lý thương hiệu
+>>>>>>> 4d2df637fcd425168e41dfe09d2df1d2f8b32509
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+<<<<<<< HEAD
+                                    <a href="<?= $baseUrl ?>./slider/editor.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm slider</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= $baseUrl ?>./slider/index.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách slider</p>
+=======
                                     <a href="<?= $baseUrl ?>./brands/editor.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Thêm thương hiệu</p>
@@ -261,10 +285,15 @@ if ($user == null) {
                                     <a href="<?= $baseUrl ?>./brands/index.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Danh sách thương hiệu</p>
+>>>>>>> 4d2df637fcd425168e41dfe09d2df1d2f8b32509
                                     </a>
                                 </li>
                             </ul>
                         </li>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4d2df637fcd425168e41dfe09d2df1d2f8b32509
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

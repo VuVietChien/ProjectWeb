@@ -4,6 +4,10 @@ include_once('./layouts/header.php');
 $db = new Database();
 $sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id WHERE deleted=0 ORDER BY id desc limit 0,8";
 $lastestItems = $db->executeResult($sql);
+
+
+$sql1 = "select * from sliders";
+$slider = $db->executeResult($sql1);
 ?>
 <div class="preloader loaded" id="preloader"><img src="./preload.gif" alt=""></div>
 <!-- banner -->
@@ -17,17 +21,29 @@ $lastestItems = $db->executeResult($sql);
   </ul>
 
   <!-- The slideshow -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://t004.gokisoft.com/uploads/2021/07/1-s-1634-banner-web.jpg" alt="Los Angeles">
-    </div>
-    <div class="carousel-item">
-      <img src="https://t004.gokisoft.com/uploads/2021/07/2-s-1634-banner-web.jpg" alt="Chicago">
-    </div>
-    <div class="carousel-item">
-      <img src="https://t004.gokisoft.com/uploads/2021/07/3-s-1634-banner-web.jpg" alt="New York">
-    </div>
-  </div>
+<?php
+  
+  foreach($slider as $item) {
+
+	if($item['id'] == 2) {
+		echo'<div class="carousel-inner">
+			<div class="carousel-item active">
+			<img src="'.$item['image'].'" alt="">
+			</div>
+		</div>';
+	}
+	else
+	{
+		echo'<div class="carousel-inner">
+			<div class="carousel-item">
+			<img src="'.$item['image'].'" alt="">
+			</div>
+		</div>';
+	}
+}
+
+?>
+  
 
   <!-- Left and right controls -->
   <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -83,9 +99,8 @@ foreach($menuItems as $item) {
 </div>
 </div>
 </div>
+
 <?php
 }
-?>
-<?php
 require_once('./layouts/footer.php');
 ?>

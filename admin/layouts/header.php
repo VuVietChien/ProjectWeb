@@ -246,54 +246,55 @@ if ($user == null) {
                             </ul>
                         </li>
 
-<<<<<<< HEAD
-
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-user-tag"></i>
+                            <i class="nav-icon fas fa-sliders-h"></i>
                                 <p>
-                                    Quản lý slider
-=======
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Quản lý thương hiệu
->>>>>>> 4d2df637fcd425168e41dfe09d2df1d2f8b32509
+                                    Quản Lý Slider
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-<<<<<<< HEAD
                                     <a href="<?= $baseUrl ?>./slider/editor.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Thêm slider</p>
+                                        <p>Thêm Slider</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?= $baseUrl ?>./slider/index.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Danh sách slider</p>
-=======
+                                        <p>Danh sách Slider</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                            <i class="nav-icon fas fa-copyright"></i>
+                                <p>
+                                    Quản Lý Thương Hiệu
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
                                     <a href="<?= $baseUrl ?>./brands/editor.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Thêm thương hiệu</p>
+                                        <p>Thêm Thương Hiệu</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?= $baseUrl ?>./brands/index.php" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Danh sách thương hiệu</p>
->>>>>>> 4d2df637fcd425168e41dfe09d2df1d2f8b32509
+                                        <p>Danh sách Thương Hiệu</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-<<<<<<< HEAD
 
-=======
->>>>>>> 4d2df637fcd425168e41dfe09d2df1d2f8b32509
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

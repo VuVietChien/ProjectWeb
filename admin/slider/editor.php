@@ -64,18 +64,6 @@ if ($id != '' && $id > 0) {
                     <div class="row">
                       <div class="col-md-9 col-12">
                         <div class="form-group">
-                          <!-- Tên sản phẩm -->
-                          <label for="usr">Tên slider:</label>
-                          <input required="true" type="text" class="form-control" id="usr" placeholder="Nhập tên sản phẩm" name="title" value="<?= $title ?>">
-                          <input type="text" name="id" value="<?= $id ?>" hidden="true">
-                        </div>
-
-                        <!-- Nội dung -->
-                        <div class="form-group">
-                          <label for="pwd">Nội Dung:</label>
-                          <textarea class="form-control" rows="5" name="content" id="description" placeholder="Nhập nội dung sản phẩm"><?= $content ?></textarea>
-                          </textarea>
-                        </div>
 
                         <!-- Lưu sản phẩm -->
                         <button class="btn btn-success">Lưu Sản Phẩm</button>

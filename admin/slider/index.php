@@ -9,10 +9,10 @@ $page = Utility::getGet('page');
 $page <= 0 ? $page = 1 : $page;
 $page_number_max = 5;
 $currentIndex = ($page - 1) * $page_number_max;
-$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.deleted = 0 ORDER BY id DESC LIMIT $currentIndex, $page_number_max";
+$sql = "select * from sliders ORDER BY id DESC LIMIT $currentIndex, $page_number_max";
 
 $data = $db->executeResult($sql);
-$sql = "SELECT COUNT(*) as 'Total' from products";
+$sql = "SELECT COUNT(*) as 'Total' from sliders";
 $result = $db->executeResult($sql);
 $total = $result[0]['Total'];
 $numPages = ceil($total / $page_number_max);
@@ -25,7 +25,7 @@ $numPages = ceil($total / $page_number_max);
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-md-12">
-                    <h1 class="m-0 mb-3">DANH SÁCH SẢN PHẨM</h1>
+                    <h1 class="m-0 mb-3">DANH SÁCH SLIDER</h1>
                     <form action="" method="GET">
 
                         <div class="row">
@@ -43,10 +43,9 @@ $numPages = ceil($total / $page_number_max);
                         <thead>
                             <tr>
                                 <th scope="col">STT</th>
-                                <th scope="col">Hình ảnh</th>
-                                <th scope="col">Tên sản phẩm</th>
-                                <th scope="col">Giá</th>
-                                <th scope="col">Danh mục</th>
+                                <th scope="col" style="width: 100px">Hình ảnh</th>
+                                <th scope="col">Tên slider</th>
+                                <th scope="col" style="width: 300px">Nội dung</th>
                                 <th scope="col">Kích hoạt</th>
                                 <th scope="col">Hành động</th>
                             </tr>
@@ -60,15 +59,14 @@ $numPages = ceil($total / $page_number_max);
                                     <th scope="row"><?= ++$index ?></th>
                                     <td><img src="<?= fixUrl($item['image']) ?>" style="max-height: 100px; margin-top: 5px; margin-bottom: 15px;"></td>
 
-                                    <td><?= $item['name'] ?></td>
-                                    <td><?= number_format($item['price']) ?>VNĐ</td>
-                                    <td><?= $item['category_name'] ?></td>
+                                    <td><?= $item['title'] ?></td>
+                                    <td><?= $item['content']?></td>                                
                                     <td> <?= $item['active'] == 0 ? "<span style='color:red'>Không kích hoạt</span>" : "<span style='color:green'>Kích hoạt</span>"; ?> </td>
 
                                     <td>
                                         <a href="./editor.php?id=<?= $item['id'] ?>" class="btn btn-warning">Sửa</a>
 
-                                        <button onclick="deleteUser(<?= $item['id'] ?>)" class="btn btn-danger">Xoá</button>
+                                        <button onclick="deleteSlider(<?= $item['id'] ?>)" class="btn btn-danger">Xoá</button>
 
                                     </td>
                                 </tr>
@@ -123,8 +121,8 @@ $numPages = ceil($total / $page_number_max);
 </div>
 
 <script>
-    function deleteUser(id) {
-        option = confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?');
+    function deleteSlider(id) {
+        option = confirm('Bạn có chắc chắn muốn xoá slider này không?');
         if (!option) {
             return;
         }

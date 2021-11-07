@@ -199,6 +199,8 @@ if ($user == null) {
                                 </li>
                             </ul>
                         </li>
+
+
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-user-tag"></i>
@@ -222,6 +224,8 @@ if ($user == null) {
                                 </li>
                             </ul>
                         </li>
+
+
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
                                 <i class="fas fa-comments"></i>
@@ -239,6 +243,32 @@ if ($user == null) {
                                 </li>
                             </ul>
                         </li>
+
+
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-user-tag"></i>
+                                <p>
+                                    Quản lý slider
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= $baseUrl ?>./slider/editor.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm slider</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= $baseUrl ?>./slider/index.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách slider</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

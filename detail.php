@@ -9,7 +9,7 @@ $product = $db->executeResult($sql,true);
 
 $category_id = $product['category_id'];
 
-$sql1 = "select Products.*, Categories.name as category_name from Products left join Categories on Products.category_id = Categories.id where Products.category_id = $category_id order by Products.updated_at desc limit 0,4";
+$sql1 = "select Products.*, Categories.name as category_name from Products left join Categories on Products.category_id = Categories.id where Products.category_id = $category_id AND deleted=0 order by Products.updated_at desc limit 0,4";
 
 $lastestItems = $db->executeResult($sql1);
 

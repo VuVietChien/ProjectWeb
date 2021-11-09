@@ -39,7 +39,7 @@ $index = 0;
 foreach($_SESSION['cart'] as $item) {
 	echo '<tr>
 			<td>'.(++$index).'</td>
-			<td>'.$item['title'].'</td>
+			<td>'.$item['name'].'</td>
 			<td>'.number_format($item['discount']).' VND</td>
 			<td>
 				'.$item['num'].'
@@ -57,7 +57,7 @@ foreach($_SESSION['cart'] as $item) {
 
 <script type="text/javascript">
 	function completeCheckout() {
-		$.post('api/ajax_request.php', {
+		$.post('utils/ajax_request.php', {
 			'action': 'checkout',
 			'fullname': $('[name=fullname]').val(),
 			'email': $('[name=email]').val(),

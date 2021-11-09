@@ -5,7 +5,7 @@ $db = new Database();
 $sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id WHERE deleted=0 ORDER BY id desc limit 0,8";
 $lastestItems = $db->executeResult($sql);
 ?>
-<div class="preloader loaded" id="preloader"><img src="./preload.gif" alt=""></div>
+<div class="preloader" id="preloader"><img src="./preload.gif" alt=""></div>
 <!-- banner -->
 <?php require_once('./slider.php') ?>
 <!-- banner stop -->

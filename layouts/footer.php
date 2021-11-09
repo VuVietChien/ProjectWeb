@@ -54,20 +54,10 @@ foreach ($_SESSION['cart'] as $item) {
 }
 ?>
 
-<script type="text/javascript">
-	function addCart(productId, num) {
-		$.post('api/ajax_request.php', {
-			'action': 'cart',
-			'id': productId,
-			'num': num
-		}, function(data) {
-			location.reload()
-		})
-	}
-</script>
+
 <!-- Cart start -->
 <span class="cart_icon">
-	<span class="cart_count"><?= $count ?></span>
+	<span class="cart_count" id="cart_count"><?= $count ?></span>
 	<a href="cart.php"><img src="https://gokisoft.com/img/cart.png"></a>
 </span>
 <!-- Cart stop -->
@@ -81,10 +71,20 @@ foreach ($_SESSION['cart'] as $item) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <!-- jquery.elevateZoom-3.0.8.min.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js"></script>
-<!-- Ionicons JS-->
-<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-<!-- Wow Js-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+<script type="text/javascript">
+	function addCart(productId, num) {
+		$.post("utils/ajax_request.php", {
+			'action': 'cart',
+			'id': productId,
+			'num': num
+		}, function(data) {
+			alert("Đã thêm sản phẩm vào giỏ hàng")
+			location.reload()
+
+		})
+	}
+</script>
 <script src="./main.js"></script>
 </body>
 

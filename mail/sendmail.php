@@ -27,7 +27,7 @@ class Mailer
 
             //Recipients
             $mail->setFrom('thuanbin1102@gmail.com', 'Anh Thanh Niên');
-            $mail->addAddress($mailDatHang, 'Joe User');     // Add a recipient
+            // $mail->addAddress($mailDatHang, 'Joe User');     // Add a recipient
             // $mail->addReplyTo('info@example.com', 'Information');
             // $mail->addCC('cc@example.com');
             // $mail->addBCC('bcc@example.com');

@@ -19,7 +19,7 @@ require_once('layouts/header.php');
 			</div>
 			<div class="form-group">
 			  <label for="pwd">Nội dung:</label>
-			  <textarea class="form-control" rows="3"></textarea>
+			  <textarea class="form-control" rows="3" name="note"></textarea>
 			</div>
 		</div>
 		<div class="col-md-6">

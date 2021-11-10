@@ -28,7 +28,12 @@ function checkout() {
 	$phone_number = Utility::getPost("phone_number");
 	$address = Utility::getPost("address");
 	$note = Utility::getPost("note");
-
+	$_SESSION['email'] = $email;
+	// echo '<pre>';
+	// print_r($_SESSION['email']);
+	// echo '</pre>';
+	// echo $email;
+	// die();
 	$user = Utility::getUserToken();
 	$userId = 0;
 	if($user != null) {
@@ -50,6 +55,7 @@ function checkout() {
 	$orderItem = $db->executeResult($sql, true);
 
 	$orderId = $orderItem['id'];
+	$email = $orderId['email'];
 
 	foreach($_SESSION['cart'] as $item) {
 		$product_id = $item['id'];
@@ -61,12 +67,11 @@ function checkout() {
 		$db->execute($sql);
 	}
 
-	unset($_SESSION['cart']);
+	// unset($_SESSION['cart']);
 }
 
 
 function updateCart() {
-    $db = new Database();
     $id = Utility::getPost('id');
     $num = Utility::getPost('num');
 

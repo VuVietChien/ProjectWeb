@@ -21,8 +21,8 @@ $index = 0;
 foreach($_SESSION['cart'] as $item) {
 	echo '<tr>
 			<td>'.(++$index).'</td>
-			<td><img src="'.$item['thumbnail'].'" style="height: 80px"/></td>
-			<td>'.$item['title'].'</td>
+			<td><img src="'.$item['image'].'" style="height: 80px"/></td>
+			<td>'.$item['name'].'</td>
 			<td>'.number_format($item['discount']).' VND</td>
 			<td style="display: flex"><button class="btn btn-light" style="border: solid #e0dede 1px; border-radius: 0px;" onclick="addMoreCart('.$item['id'].', -1)">-</button>
 				<input type="number" id="num_'.$item['id'].'" value="'.$item['num'].'" class="form-control" style="width: 90px; border-radius: 0px" onchange="fixCartNum('.$item['id'].')"/>
@@ -53,7 +53,7 @@ foreach($_SESSION['cart'] as $item) {
 	}
 
 	function updateCart(productId, num) {
-		$.post('api/ajax_request.php', {
+		$.post('utils/ajax_request.php', {
 			'action': 'update_cart',
 			'id': productId,
 			'num': num

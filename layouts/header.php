@@ -35,11 +35,10 @@ $menuItems = $db->executeResult($sql);
 		.nav li {
 			text-transform: uppercase;
 			color: #28a745;
-			margin-top: 20px;
+			margin-top: 10px;
 		}
 
 		.nav li a {
-
 			color: rgba(102, 102, 102, 0.85);
 			font-weight: bold;
 		}
@@ -137,6 +136,10 @@ $menuItems = $db->executeResult($sql);
 			width: 40px;
 			z-index: 99;
 		}
+
+		footer {
+			margin-top: 30px;
+		}
 	</style>
 </head>
 
@@ -147,7 +150,7 @@ $menuItems = $db->executeResult($sql);
 		<ul class="nav" style="width: 100%;align-items:center;justify-content:center;padding:20px 0;">
 			<li class="nav-item" style="margin-top: 0px !important;">
 				<!-- <a href="index.php"><img src="https://t004.gokisoft.com/uploads/2021/07/1-s-1636-logo-web.jpg" style="height: 80px;"></a> -->
-				<a href="index.php"><img src="./logo1.png" style="height: 60px;"></a>
+				<a href="index.php"><img src="./logo1.png" style="height: 50px;"></a>
 			</li>
 			<?php
 			foreach ($menuItems as $item) {
@@ -156,6 +159,9 @@ $menuItems = $db->executeResult($sql);
 				  </li>';
 			}
 			?>
+			<li class="nav-item">
+				    <a class="nav-link" href="contact.php">Liên Lạc</a>
+			</li>
 		</ul>
 	</div>
 	<!-- Menu Stop -->

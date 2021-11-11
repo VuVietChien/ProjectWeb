@@ -46,9 +46,7 @@ include_once '../layouts/header.php';
                             } else {
                                 $sql = "SELECT * FROM feedback order by status asc";
                             }
-
                             
-
                             $data = $db->executeResult($sql);
                             $index = 0;
                             foreach ($data as $item) : ?>

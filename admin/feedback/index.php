@@ -2,9 +2,7 @@
 $title = "Trang Quản Lý Phản Hồi";
 $baseUrl = '../';
 include_once '../layouts/header.php';
-$db = new Database();
-$sql = "SELECT * FROM feedback order by status asc";
-$data = $db->executeResult($sql);
+
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -15,7 +13,16 @@ $data = $db->executeResult($sql);
                 <div class="col-md-12">
                     <h1 class="m-0 mb-3">Danh sách phản hồi</h1>
                     <!-- <a href="editor.php" class="btn btn-success">Thêm danh mục</a> -->
+                    <div class="row">
+                            <div class="col-md-11">
+                                <input required class="form-control" type="text" name="search" placeholder="Nhập thông tin cần tìm kiếm ...">
+                            </div>
+                            <div class="col-md-1">
+                                <a href="index.php" class="btn btn-dark"><i class="fas fa-sync-alt"></i></a>
+                                <!-- <button type="submit" style="width: 100%;" class="btn btn-dark"><i class="fas fa-sync-alt"></i></button> -->
+                            </div>
 
+                        </div>
                     <table class="table table-hover mt-5 table-bordered">
                         <thead>
                             <tr>
@@ -33,6 +40,14 @@ $data = $db->executeResult($sql);
                         </thead>
                         <tbody>
                             <?php
+                            $db = new Database();
+                            if (isset($_GET['search']) && $_GET['search'] != '') {
+                                $sql = 'select * from feedback where lastname like "%'.$_GET['search'].'%" or note like "%'.$_GET['search'].'%"';
+                            } else {
+                                $sql = "SELECT * FROM feedback order by status asc";
+                            }
+                            
+                            $data = $db->executeResult($sql);
                             $index = 0;
                             foreach ($data as $item) : ?>
                                 <tr>

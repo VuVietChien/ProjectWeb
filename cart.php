@@ -29,7 +29,7 @@ require_once('layouts/header.php');
 				<button class="btn btn-light" style="border: solid #e0dede 1px; border-radius: 0px;" onclick="addMoreCart(' . $item['id'] . ', 1)">+</button>
 			</td>
 			<td style="color:green;font-weight:500">' . number_format($item['discount'] * $item['num']) . ' VND</td>
-			<td><button class="btn btn-danger" onclick="updateCart(' . $item['id'] . ',0)">Xoá</button></td>
+			<td><button class="btn btn-danger" onclick="deleteCart(' . $item['id'] . ',0)">Xoá</button></td>
 		</tr>';
 			}
 			?>
@@ -46,7 +46,6 @@ require_once('layouts/header.php');
 		num = parseInt($('#num_' + id).val())
 		num += delta
 		$('#num_' + id).val(num)
-
 		updateCart(id, num)
 	}
 
@@ -57,17 +56,27 @@ require_once('layouts/header.php');
 	}
 
 	function updateCart(productId, num) {
-		var option = confirm(`Bạn có muốn xoá sản phẩm này không?`);
-		if (option == true) {
+		$.post('utils/ajax_request.php', {
+			'action': 'update_cart',
+			'id': productId,
+			'num': num
+		}, function(data) {
+			location.reload()
+		})
+	}
+
+	function deleteCart(productId, num) {
+		var option = confirm("Bạn có muốn xoá không?")
+		if (option) {
 			$.post('utils/ajax_request.php', {
-				'action': 'update_cart',
+				'action': 'delete_cart',
 				'id': productId,
 				'num': num
 			}, function(data) {
 				location.reload()
 			})
 		} else {
-			return;
+			return
 		}
 
 	}

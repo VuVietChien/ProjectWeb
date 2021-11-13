@@ -71,7 +71,6 @@ foreach ($_SESSION['cart'] as $item) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <!-- jquery.elevateZoom-3.0.8.min.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js"></script>
-
 <script type="text/javascript">
 	function addCart(productId, num) {
 		$.post("utils/ajax_request.php", {

@@ -8,7 +8,14 @@ $page = Utility::getGet('page');
 $page <= 0 ? $page = 1 : $page;
 $page_number_max = 5;
 $currentIndex = ($page - 1) * $page_number_max;
-$sql = "SELECT users.*,roles.name as role_name FROM users,roles  WHERE users.role_id=roles.id AND users.deleted=0 ORDER BY id DESC LIMIT $currentIndex, $page_number_max";
+if (isset($_GET['search']) &&  $_GET['search'] != null) {
+    $search = $_GET['search'];
+    $sql = "SELECT users.*,roles.name as role_name FROM users,roles  WHERE users.role_id=roles.id AND users.deleted=0 AND users.email like '%$search%' ORDER BY id DESC ";
+    
+} else {
+    $sql = "SELECT users.*,roles.name as role_name FROM users,roles  WHERE users.role_id=roles.id AND users.deleted=0 ORDER BY id DESC LIMIT $currentIndex, $page_number_max";
+}
+
 $data = $db->executeResult($sql);
 $sql = "SELECT COUNT(*) as 'Total' from users";
 $result = $db->executeResult($sql);

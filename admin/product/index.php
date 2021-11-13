@@ -9,7 +9,14 @@ $page = Utility::getGet('page');
 $page <= 0 ? $page = 1 : $page;
 $page_number_max = 5;
 $currentIndex = ($page - 1) * $page_number_max;
-$sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.deleted = 0 ORDER BY id DESC LIMIT $currentIndex, $page_number_max";
+if (isset($_GET['search']) &&  $_GET['search'] != null) {
+    $search = $_GET['search'];
+    $sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.deleted = 0 and products.name like '%$search%' ORDER BY id DESC";
+    
+} else {
+    $sql = "select products.*, categories.name as category_name from products left join categories on products.category_id = categories.id where products.deleted = 0 ORDER BY id DESC LIMIT $currentIndex, $page_number_max";
+}
+
 
 $data = $db->executeResult($sql);
 $sql = "SELECT COUNT(*) as 'Total' from products";

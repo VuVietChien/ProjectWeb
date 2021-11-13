@@ -145,9 +145,7 @@ $menuItems = $db->executeResult($sql);
 
 <body>
 	<!-- Menu START -->
-
-	<div class="container">
-		<ul class="nav" style="width: 100%;align-items:center;justify-content:center;padding:20px 0;">
+	<ul class="nav" style="width: 100%;align-items:center;justify-content:center;padding:20px 0;">
 			<li class="nav-item" style="margin-top: 0px !important;">
 				<!-- <a href="index.php"><img src="https://t004.gokisoft.com/uploads/2021/07/1-s-1636-logo-web.jpg" style="height: 80px;"></a> -->
 				<a href="index.php"><img src="./logo1.png" style="height: 50px;"></a>
@@ -163,5 +161,4 @@ $menuItems = $db->executeResult($sql);
 				    <a class="nav-link" href="contact.php">Liên Lạc</a>
 			</li>
 		</ul>
-	</div>
 	<!-- Menu Stop -->

@@ -14,19 +14,12 @@ $noidung .= "<h4>Đơn hàng của bạn bao gồm: </h4>";
 	<li>Tổng:" . number_format($value['num'] * $value['discount']) . " VNĐ</li>
 	</ul>";
 }
-
-
-
 $maildathang = $_SESSION['email'];
 $mail = new Mailer();
 $mail->datHangMail($tieude, $noidung, $maildathang);
 unset($_SESSION['cart']);
 
-// echo '
-// <pre>';
-// print_r($_SESSION['cart']);
-// echo '</pre>';
-// die();
+
 ?>
 <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
 	<div class="row">

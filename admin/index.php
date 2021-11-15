@@ -1,6 +1,7 @@
 <?php
 $title = "Trang Quản trị";
 $baseUrl = '';
+
 include_once './layouts/header.php';
 ?>
 <!-- Content Wrapper. Contains page content -->

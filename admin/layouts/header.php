@@ -7,7 +7,6 @@ if ($user == null) {
     header("Location:./authen/login.php");
     die();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +71,7 @@ if ($user == null) {
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="<?=$baseUrl?>./index.php" class="brand-link">
+            <a href="<?= $baseUrl ?>./index.php" class="brand-link">
                 <img src="<?= $baseUrl ?>dist/img/logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">SportStore</span>
             </a>
@@ -83,10 +82,10 @@ if ($user == null) {
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <!-- <img src="<?= $baseUrl ?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
-                        <img src="<?=  fixUrl($user['avatar']) ?>" class="img-circle elevation-2">
+                        <img src="<?= fixUrl($user['avatar'], '../')  ?>" class="img-circle elevation-2">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block"><?=$user['fullname']?></a>
+                        <a href="#" class="d-block"><?= $user['fullname'] ?></a>
                         <a href="<?= $baseUrl ?>./authen/logout.php" onclick="return confirm('Bạn có muốn đăng xuất không?')" class="d-block btn-logout">Đăng xuất</a>
                     </div>
                 </div>
@@ -232,7 +231,7 @@ if ($user == null) {
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-comments"></i>
                                 <p>
-                                      Quản lý phản hồi
+                                    Quản lý phản hồi
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -248,7 +247,7 @@ if ($user == null) {
 
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
-                            <i class="nav-icon fas fa-sliders-h"></i>
+                                <i class="nav-icon fas fa-sliders-h"></i>
                                 <p>
                                     Quản Lý Slider
                                     <i class="right fas fa-angle-left"></i>
@@ -273,7 +272,7 @@ if ($user == null) {
 
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
-                            <i class="nav-icon fas fa-copyright"></i>
+                                <i class="nav-icon fas fa-copyright"></i>
                                 <p>
                                     Quản Lý Thương Hiệu
                                     <i class="right fas fa-angle-left"></i>
@@ -294,7 +293,23 @@ if ($user == null) {
                                 </li>
                             </ul>
                         </li>
-
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-chart-bar"></i>
+                                <p>
+                                    Quản Lý Thống kê
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= $baseUrl ?>./statistics/index.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách Thống kê</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

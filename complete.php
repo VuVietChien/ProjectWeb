@@ -1,19 +1,54 @@
 <?php
 $baseUrl = './mail';
 require_once('layouts/header.php');
+
 require_once("./mail/sendmail.php");
 $tieude = "Đặt hàng website sportstore.vn thành công!";
 $noidung = "<p>Cảm ơn quý khách đã đặt hàng của chúng tôi: </p>";
 $noidung .= "<h4>Đơn hàng của bạn bao gồm: </h4>";
+$noidung.="<table style='border-collapse: collapse; width: 100%;border: 1px solid black;'>";
+$noidung.="<tr>
+<th style='border: 1px solid #dddddd;
+text-align: left;border: 1px solid black;
+padding: 8px;'>Tên sản phẩm</th>
+<th style='border: 1px solid #dddddd;
+text-align: left;border: 1px solid black;
+padding: 8px;'>Giá</th>
+<th style='border: 1px solid #dddddd;
+text-align: left;border: 1px solid black;
+padding: 8px;'>Số lượng</th>
+</tr>";
+
+
 ?>
+
 <?php foreach ($_SESSION['cart'] as $key => $value) {
-	$noidung .= "<ul style='border:1px solid black;margin:10px;'>
-	<li>Sản phẩm:" . $value['name'] . "</li>
-	<li>Giá:" . number_format($value['discount']) . " VNĐ</li>
-	<li>Số lượng:" . $value['num'] . "</li>
-	<li>Tổng:" . number_format($value['num'] * $value['discount']) . " VNĐ</li>
-	</ul>";
+	// $noidung .= "<ul style='border:1px solid black;margin:10px;'>
+	// <li>Sản phẩm:" . $value['name'] . "</li>
+	// <li>Giá:" . number_format($value['discount']) . " VNĐ</li>
+	// <li>Số lượng:" . $value['num'] . "</li>
+	// <li>Tổng:" . number_format($value['num'] * $value['discount']) . " VNĐ</li>
+	// </ul>";
+	$noidung .= "
+	<tr>
+	  <td style='border: 1px solid gray;
+	  text-align: left;
+	  padding: 8px;tr:nth-child(even) {
+		background-color: #dddddd;
+	  }'>" . $value['name'] . "</td>
+	  <td style='border: 1px solid gray;
+	  text-align: left;
+	  padding: 8px;tr:nth-child(even) {
+		background-color: #dddddd;
+	  }'>" . number_format($value['discount']) . " VNĐ</td>
+	  <td style='border: 1px solid gray;
+	  text-align: left;
+	  padding: 8px;tr:nth-child(even) {
+		background-color: #dddddd;
+	  }'>" . number_format($value['num'] * $value['discount']) . " VNĐ</td>
+	</tr>";
 }
+$noidung.="</table>";
 $maildathang = $_SESSION['email'];
 $mail = new Mailer();
 $mail->datHangMail($tieude, $noidung, $maildathang);
